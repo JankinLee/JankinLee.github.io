@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">309字</span>
+    <span class="post-count">941字</span>
   </span>
 </span>
 <span class="bull">
@@ -607,7 +607,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">1分钟</span>
+    <span class="post-count">4分钟</span>
   </span>
 </span>
         
@@ -681,7 +681,81 @@
 </li>
 </ol>
 </blockquote>
-<h2 id="理解明天更新哒。"><a href="#理解明天更新哒。" class="headerlink" title="理解明天更新哒。"></a>理解明天更新哒。</h2>
+<h2 id="注意与解读"><a href="#注意与解读" class="headerlink" title="注意与解读"></a>注意与解读</h2><p>需要注意上文中的！与？，并不是JS的操作符，而是规范中运行时语义（Runtime Semantic）——ReturnIfAbrupt的shorthand。其中！与？的区别主要在调用语义处返回的Completion Record的类型（[[Type]]）上，在这里讨论的==比较中应该没什么影响，详情见规范的第五章第二节和第七章第二节：</p>
+<blockquote>
+<p>Invocations of <a href="https://tc39.es/ecma262/#sec-algorithm-conventions-abstract-operations" target="_blank" rel="noopener">abstract operations</a> and syntax-directed operations that are prefixed by <code>?</code> indicate that <a href="https://tc39.es/ecma262/#sec-returnifabrupt" target="_blank" rel="noopener">ReturnIfAbrupt</a> should be applied to the resulting <a href="https://tc39.es/ecma262/#sec-completion-record-specification-type" target="_blank" rel="noopener">Completion Record</a>. </p>
+<p>Similarly, prefix <code>!</code> is used to indicate that the following invocation of an abstract or <a href="https://tc39.es/ecma262/#sec-algorithm-conventions-syntax-directed-operations" target="_blank" rel="noopener">syntax-directed operation</a> will never return an <a href="https://tc39.es/ecma262/#sec-completion-record-specification-type" target="_blank" rel="noopener">abrupt completion</a> and that the resulting <a href="https://tc39.es/ecma262/#sec-completion-record-specification-type" target="_blank" rel="noopener">Completion Record</a>‘s [[Value]] field should be used in place of the return value of the operation. </p>
+</blockquote>
+<p>简单总结一下==比较的算法规则：</p>
+<ol>
+<li>首先==两边的操作数是否是同一类型，如果是，则同===比较。</li>
+<li>两个操作数都是基本数据类型（Number，String，Boolean，BigInt，Symbol）：<ul>
+<li>一个 操作数是Numeric（Number、BigInt），则将另外一个操作数转成对应的数值类型来比较。</li>
+<li>一个操作数是Boolean，则将Boolean转化成Number，再进行比较。</li>
+</ul>
+</li>
+<li>一个操作数是对象，则通过ToPrimitive ( input [ , PreferredType ] )，将对象转换成基本数据类型再比较。</li>
+</ol>
+<p>经过转换，很多最后都会变成数值之间的比较，如果<a href="https://tc39.es/ecma262/#mathematical-value" target="_blank" rel="noopener">mathematical value</a>的值相等，那返回<strong>true</strong>，否则为<strong>false</strong>。需要注意的是，<strong>NaN</strong>, <strong>+∞</strong>,  <strong>-∞</strong>的出现，就代表了整个比较的结果为<strong>false</strong>。</p>
+<p>ToPrimitive ( input [ , PreferredType ] )的转化规则如下，仅需要注意，其中用到的toString等函数可能是被内置覆盖了的，如[].toString()，其他的就不做更多的解读了：</p>
+<blockquote>
+<h1 id="7-1-1-ToPrimitive-input-PreferredType"><a href="#7-1-1-ToPrimitive-input-PreferredType" class="headerlink" title="7.1.1 ToPrimitive ( input [ , PreferredType ] )"></a>7.1.1 ToPrimitive ( input [ , PreferredType ] )</h1><p>The abstract operation ToPrimitive takes argument input and optional argument PreferredType. It converts its input argument to a non-Object type. If an object is capable of converting to more than one primitive type, it may use the optional hint PreferredType to favour that type. It performs the following steps when called:</p>
+</blockquote>
+<blockquote>
+<ol>
+<li><a href="https://tc39.es/ecma262/#assert" target="_blank" rel="noopener">Assert</a>: input is an <a href="https://tc39.es/ecma262/#sec-ecmascript-language-types" target="_blank" rel="noopener">ECMAScript language value</a>.</li>
+<li>If <a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values" target="_blank" rel="noopener">Type</a>(input) is Object, then<ol>
+<li>If PreferredType is not present, let hint be “<strong>default</strong>“.</li>
+<li>Else if PreferredType is hint String, let hint be “<strong>string</strong>“.</li>
+<li>Else,<ol>
+<li><a href="https://tc39.es/ecma262/#assert" target="_blank" rel="noopener">Assert</a>: PreferredType is hint Number.</li>
+<li>Let hint be “<strong>number</strong>“.</li>
+</ol>
+</li>
+<li>Let exoticToPrim be ? <a href="https://tc39.es/ecma262/#sec-getmethod" target="_blank" rel="noopener">GetMethod</a>(input, <a href="https://tc39.es/ecma262/#sec-well-known-symbols" target="_blank" rel="noopener">@@toPrimitive</a>).</li>
+<li>If exoticToPrim is not <strong>undefined</strong>, then<ol>
+<li>Let result be ? <a href="https://tc39.es/ecma262/#sec-call" target="_blank" rel="noopener">Call</a>(exoticToPrim, input, « hint »).</li>
+<li>If <a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values" target="_blank" rel="noopener">Type</a>(result) is not Object, return result.</li>
+<li>Throw a <strong>TypeError</strong> exception.</li>
+</ol>
+</li>
+<li>If hint is “<strong>default</strong>“, set hint to “<strong>number</strong>“.</li>
+<li>Return ? <a href="https://tc39.es/ecma262/#sec-ordinarytoprimitive" target="_blank" rel="noopener">OrdinaryToPrimitive</a>(input, hint).</li>
+</ol>
+</li>
+<li>Return input.</li>
+</ol>
+</blockquote>
+<blockquote>
+<h1 id="7-1-1-1-OrdinaryToPrimitive-O-hint"><a href="#7-1-1-1-OrdinaryToPrimitive-O-hint" class="headerlink" title="7.1.1.1 OrdinaryToPrimitive ( O, hint )"></a>7.1.1.1 OrdinaryToPrimitive ( O, hint )</h1><p>The abstract operation OrdinaryToPrimitive takes arguments O and hint. It performs the following steps when called:</p>
+</blockquote>
+<blockquote>
+<ol>
+<li><a href="https://tc39.es/ecma262/#assert" target="_blank" rel="noopener">Assert</a>: <a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values" target="_blank" rel="noopener">Type</a>(O) is Object.</li>
+<li><a href="https://tc39.es/ecma262/#assert" target="_blank" rel="noopener">Assert</a>: <a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values" target="_blank" rel="noopener">Type</a>(hint) is String and its value is either “<strong>string</strong>“ or “<strong>number</strong>“.</li>
+<li><p>If hint is “<strong>string</strong>“, then</p>
+<ul>
+<li>Let methodNames be « “<strong>toString</strong>“, “<strong>valueOf</strong>“ ».</li>
+</ul>
+</li>
+<li><p>Else,</p>
+<ul>
+<li>Let methodNames be « “<strong>valueOf</strong>“, “<strong>toString</strong>“ ».</li>
+</ul>
+</li>
+<li>For each name in methodNames in <a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type" target="_blank" rel="noopener">List</a> order, do</li>
+<li>Let method be ? <a href="https://tc39.es/ecma262/#sec-get-o-p" target="_blank" rel="noopener">Get</a>(O, name).<ol start="2">
+<li>If <a href="https://tc39.es/ecma262/#sec-iscallable" target="_blank" rel="noopener">IsCallable</a>(method) is <strong>true</strong>, then</li>
+<li>Let result be ? <a href="https://tc39.es/ecma262/#sec-call" target="_blank" rel="noopener">Call</a>(method, O).<ol start="2">
+<li>If <a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values" target="_blank" rel="noopener">Type</a>(result) is not Object, return result.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Throw a <strong>TypeError</strong> exception.</li>
+</ol>
+</blockquote>
+
         </div>
 
         <!-- .entry-content -->
@@ -961,7 +1035,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">3k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">3.6k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
