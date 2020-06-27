@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-06-26T05:02:45.243Z</updated>
+  <updated>2020-06-27T19:16:59.000Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>理解JavaScript的重要概念</title>
+    <link href="/post/d5b6.html"/>
+    <id>/post/d5b6.html</id>
+    <published>2020-06-27T16:08:31.000Z</published>
+    <updated>2020-06-27T19:16:59.000Z</updated>
+    
+    <summary type="html">
+    
+      从ECMAScript2021入手，尽量理清执行上下文、环境记录、作用域、闭包、词法环境、变量环境等概念的意义及其间的关系。
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="ECMAScript2021" scheme="/tags/ECMAScript2021/"/>
+    
+      <category term="JavaScript" scheme="/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>抽象操作之==比较</title>
