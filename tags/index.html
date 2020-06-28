@@ -593,28 +593,10 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/ECMAScript2021/" title="ECMAScript2021: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="ECMAScript2021" style="background-color: #F9EBEA;">ECMAScript2021
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/JavaScript/" title="JavaScript: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="JavaScript" style="background-color: #F5EEF8;">JavaScript
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/web/" title="web: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="web" style="background-color: #D5F5E3;">web
+                            data-tagname="web" style="background-color: #F9EBEA;">web
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -623,7 +605,25 @@
                 <a href="/tags/悦读/" title="悦读: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="悦读" style="background-color: #E8F8F5;">悦读
+                            data-tagname="悦读" style="background-color: #F5EEF8;">悦读
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/ECMAScript2021/" title="ECMAScript2021: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="ECMAScript2021" style="background-color: #D5F5E3;">ECMAScript2021
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/JavaScript/" title="JavaScript: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="JavaScript" style="background-color: #E8F8F5;">JavaScript
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -733,7 +733,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud( [{"text":"ECMAScript2021","weight":2,"link":"/tags/ECMAScript2021/"},{"text":"JavaScript","weight":2,"link":"/tags/JavaScript/"},{"text":"web","weight":2,"link":"/tags/web/"},{"text":"悦读","weight":2,"link":"/tags/悦读/"}], {
+    $('#tag-wordcloud').jQCloud( [{"text":"web","weight":2,"link":"/tags/web/"},{"text":"悦读","weight":2,"link":"/tags/悦读/"},{"text":"ECMAScript2021","weight":2,"link":"/tags/ECMAScript2021/"},{"text":"JavaScript","weight":2,"link":"/tags/JavaScript/"}], {
         autoResize: true
     });
 </script>
@@ -967,6 +967,30 @@
   
    <!-- pages壁纸切换 -->
  
+    <div class="skin-menu no-select" id="mainskin"  style="position: fixed">
+        <div class="theme-controls row-container">
+            <ul class="menu-list">
+                <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+                <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+                <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+                <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+                <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+                <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+                <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+                <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+        <div class="font-family-controls row-container">
+            <button type="button" class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+        </div>
+    </div>   
+    <canvas id="night-mode-cover"></canvas> 
+        <div class="changeSkin-gear no-select">
+        <div class="keys" id="setbtn"> <span id="open-skinMenu"> 切换壁纸 | SCHEME TOOL 
+            &nbsp;<i class="iconfont icon-gear inline-block rotating"></i> </span></div>
+    </div><!-- skin.end -->
+
   <!-- left side bar -->
 <div id="RightDownBtn">
     <a id="btn" href="javascript:void(0)" target="_self" style="">
