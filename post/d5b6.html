@@ -574,7 +574,7 @@
         <span class="post-meta-item-icon">
           <i class="fa fa-calendar"></i>
         </span>
-        <span class="post-meta-item-text"> 2020-6-28 </span>
+        <span class="post-meta-item-text"> 2020-6-30 </span>
       </span>
       <span class="bull">
         ·</span>
@@ -639,7 +639,7 @@
         <div class="entry-content">
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    既然<strong>执行上下文</strong>，<strong>环境记录</strong>，<strong>作用域</strong>，<strong>闭包</strong>，<strong>词法环境</strong>，<strong>变量环境</strong>等是JS的重要概念，那么它们对于我们来说，是不陌生的。</p>
 <p>​    然而大多数人在学习前端的过程中，很少也很难从<strong>语言规范</strong>入手，所以这些概念是属于早接触，晚理解的那一类。</p>
-<p>​    因此，整个学习过程中，本人虽然也尝试深入理解了这些概念，但并没有达到理想的效果<em>（总有人在概念后面打括号，将一些概念划等号，不告诉我们为什么没问题，问题是不同的人划的等号还不同？！）</em>，为此，我决定根据ECMAScript2021，来进一步地理解它们。</p>
+<p>​    然而，整个学习过程中，本人虽然也尝试深入理解了这些概念，但并没有达到理想的效果<em>（总有人在概念后面打括号，将一些概念划等号，不告诉我们为什么没问题，问题是不同的人划的等号还不同？！）</em>，为此，我决定根据ECMAScript2021，来进一步地理解它们。</p>
 <h2 id="规范类型（Specification-Types）"><a href="#规范类型（Specification-Types）" class="headerlink" title="规范类型（Specification Types）"></a>规范类型（Specification Types）</h2><p>在讲以上的重要概念之前，我们需要先了解这么一个概念——规范类型。</p>
 <p>​    引用规范中的话：</p>
 <blockquote>
@@ -668,7 +668,7 @@
 <p>​    我们都知道，由于流控制语句与函数调用的关系，程序并不是单纯的从上往下执行的。所以要想正确的执行代码，就需要将代码转化为正确的机器码。而这，有两种办法，编译与解释，分别对应了两种语言，编译型语言和解释型语言。</p>
 <p>​    随便一查“JavaScript”，就会看到众多“脚本语言”的字眼。而脚本语言的特点之一，就是解释执行。然而为了解决解释语言解释器低效的问题，浏览器，也就是ECMAScript Implementation，引入Just-in-time编译器（<strong>JIT</strong>）。从而实现了变量提升等解释型语言难以实现的特性。</p>
 <p>​    上面说了这么多，和执行上下文有什么关系，为啥要理解执行上下文？？？好吧，一个点是因为<strong>JIT是基于执行上下文来实现的</strong>。当然还有其他的原因，比如说，为了理解闭包。<strong>闭包的产生条件</strong>，<strong>闭包的工作原理</strong>等都和<strong>执行上下文</strong>有关。<em>（那。。。为什么要理解闭包？因为经常要用啊，此处禁止套娃哈哈）</em></p>
-<p>​    回归正题，执行上下是什么？老样子，引用：</p>
+<p>​    回归正题，执行上下文是什么？老样子，引用：</p>
 <blockquote>
 <p>An execution context is a specification device that is used to track the runtime evaluation of code by an ECMAScript implementation. </p>
 </blockquote>
@@ -691,11 +691,11 @@
 <p>在实现中，执行上下文包含跟踪相关代码的执行进度所必需的，任何特定状态。</p>
 </blockquote>
 <p>​    说了等于没说。。。那不然说这是规范呢！但人还是有要求的：</p>
-<p>其中构成上，有六个部分：</p>
+<p>其中构成上，至少有六个部分：</p>
 <blockquote>
 <p>code evaluation state，Function，<a href="https://tc39.es/ecma262/#realm" target="_blank" rel="noopener">Realm</a>，ScriptOrModule，LexicalEnvironment，VariableEnvironment</p>
 </blockquote>
-<h2 id="PS：剩下的明天再来，555，老腰痛了，整这个比想象中费时啊。2020年6月28日03-06-08"><a href="#PS：剩下的明天再来，555，老腰痛了，整这个比想象中费时啊。2020年6月28日03-06-08" class="headerlink" title="PS：剩下的明天再来，555，老腰痛了，整这个比想象中费时啊。2020年6月28日03:06:08"></a>PS：剩下的明天再来，555，老腰痛了，整这个比想象中费时啊。2020年6月28日03:06:08</h2>
+<h2 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h2>
         </div>
 
         <!-- .entry-content -->
@@ -975,7 +975,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">5.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">5.1k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
@@ -1101,30 +1101,6 @@ wpac_init.push({widget: 'Rating', id: 23889});
   
    <!-- pages壁纸切换 -->
  
-    <div class="skin-menu no-select" id="mainskin"  style="position: fixed">
-        <div class="theme-controls row-container">
-            <ul class="menu-list">
-                <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
-                <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
-                <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
-                <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
-                <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
-                <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
-                <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
-                <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
-            </ul>
-        </div>
-        <div class="font-family-controls row-container">
-            <button type="button" class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
-            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
-        </div>
-    </div>   
-    <canvas id="night-mode-cover"></canvas> 
-        <div class="changeSkin-gear no-select">
-        <div class="keys" id="setbtn"> <span id="open-skinMenu"> 切换壁纸 | SCHEME TOOL 
-            &nbsp;<i class="iconfont icon-gear inline-block rotating"></i> </span></div>
-    </div><!-- skin.end -->
-
   <!-- left side bar -->
 <div id="RightDownBtn">
     <a id="btn" href="javascript:void(0)" target="_self" style="">
