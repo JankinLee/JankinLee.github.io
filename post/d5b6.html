@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">1.5k字</span>
+    <span class="post-count">2.3k字</span>
   </span>
 </span>
 <span class="bull">
@@ -607,7 +607,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">5分钟</span>
+    <span class="post-count">8分钟</span>
   </span>
 </span>
         
@@ -637,9 +637,9 @@
         <!--套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    既然<strong>执行上下文</strong>，<strong>环境记录</strong>，<strong>作用域</strong>，<strong>闭包</strong>，<strong>词法环境</strong>，<strong>变量环境</strong>等是JS的重要概念，那么它们对于我们来说，是不陌生的。</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    既然<strong>执行上下文</strong>，<strong>环境记录</strong>，<strong>作用域</strong>，<strong>作用域链</strong>，<strong>词法环境</strong>，<strong>变量环境</strong>，<strong>闭包</strong>等是JS的重要概念，那么它们对于我们来说，是不陌生的。</p>
 <p>​    然而大多数人在学习前端的过程中，很少也很难从<strong>语言规范</strong>入手，所以这些概念是属于早接触，晚理解的那一类。</p>
-<p>​    然而，整个学习过程中，本人虽然也尝试深入理解了这些概念，但并没有达到理想的效果<em>（总有人在概念后面打括号，将一些概念划等号，不告诉我们为什么没问题，问题是不同的人划的等号还不同？！）</em>，为此，我决定根据ECMAScript2021，来进一步地理解它们。</p>
+<p>​    然而，整个学习过程中，本人虽然也尝试深入理解了这些概念，但并没有达到理想的效果<em>（总有人在概念后面打括号，将一些概念划等号，不告诉我们为什么没问题，问题是不同的人划的等号还不同？！(╯‵□′)╯︵┻━┻）</em>，为此，我决定根据ECMAScript2021，来进一步地理解它们。</p>
 <h2 id="规范类型（Specification-Types）"><a href="#规范类型（Specification-Types）" class="headerlink" title="规范类型（Specification Types）"></a>规范类型（Specification Types）</h2><p>在讲以上的重要概念之前，我们需要先了解这么一个概念——规范类型。</p>
 <p>​    引用规范中的话：</p>
 <blockquote>
@@ -653,7 +653,7 @@
 </blockquote>
 <p>​    在本规范中，<strong>记录</strong>，是用来描述算法中<strong>数据的集合（集合体）</strong>的。</p>
 <p>记录的值在形式上类似于我们的键值对，由<strong>字段</strong>与字段的<strong>值</strong>组成。其中字段总是形如<strong>[[Field]]</strong>。</p>
-<p>关于<strong>规范类型</strong>和<strong>记录</strong>，就先扯这么多，大致理解前者是描述语言的元数据类型，后者是前者中的一种就先够了。</p>
+<p>关于<strong>规范类型</strong>和<strong>记录</strong>，就先扯这么多，大致理解前者是描述语言的元数据类型，后者是前者中的一种就先够了。我们后面会提的<strong>环境记录</strong>，就属于记录的一种。</p>
 <h2 id="执行上下文（Execution-Contexts）——也就是作用域（Scope）这一概念在JS中的体现"><a href="#执行上下文（Execution-Contexts）——也就是作用域（Scope）这一概念在JS中的体现" class="headerlink" title="执行上下文（Execution Contexts）——也就是作用域（Scope）这一概念在JS中的体现"></a>执行上下文（Execution Contexts）——也就是作用域（Scope）这一概念在JS中的体现</h2><p>首先我们先来解释一下这个标题。为什么说作用域这一概念在JS中的体现是执行上下文呢？</p>
 <p><strong>作用域</strong>这一概念，本就不是，也<strong>不需要</strong>由ECMAScript来定义。它的意义百度一下就能知道：</p>
 <blockquote>
@@ -663,11 +663,15 @@
 <blockquote>
 <p>The current context of execution.</p>
 </blockquote>
-<p>只是<strong>作用域</strong>这个概念相比于<strong>执行上下文</strong>来说，前者更偏向于表示代码中<strong>名称的可达性</strong>，而后者更偏向于表示规范中跟踪代码运行的一个<strong>程式（device）</strong>。后者的意义显得更加完整一些，当然，实际生活中我们使用的时候不一定用的那么得严谨。</p>
+<p>只是<strong>作用域</strong>这个概念相比于<strong>执行上下文</strong>来说，前者更偏向于表示代码中<strong>名称（标识符）的可达性</strong>，而后者更偏向于<strong>表示规范中跟踪代码运行的一个程式（device）</strong>。后者的意义显得更加完整一些，当然，实际生活中我们使用的时候不一定用的那么得严谨。</p>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>前面说，JS中通过执行上下文通过来描述作用域。而作用域链这个概念呢，在规范中是不存在的。</p>
+<p>作用域链，就是当前执行上下文的<strong>两个环境记录（Environment Record，一种记录类型），即词法环境（LexicalEnvironment），和变量环境（VariableEnvironment）以及它们所指向的其他环境记录</strong>。因为这些环境记录，<strong>记录了所有的变量</strong>（whatever var、let、const）、函数、类、模块，对象，内置全局对象，内置全局对象的属性，以及顶级声明<strong>与名称的绑定关系</strong>。</p>
+<p>这两个环境记录呢，就是前面所提的<strong>Record类型</strong>，因为其内部的[[OuterEnv]]字段，指向了外部执行上下文的环境记录（没有外部环境记录的，该字段值就为null），很容易抽象成链条的形式，所以被称为作用域链。</p>
+<p>详见规范的<a href="https://tc39.es/ecma262/#sec-environment-records" target="_blank" rel="noopener">8.1节</a>。</p>
 <h3 id="那么，执行上下文到底是个什么东西？"><a href="#那么，执行上下文到底是个什么东西？" class="headerlink" title="那么，执行上下文到底是个什么东西？"></a>那么，执行上下文到底是个什么东西？</h3><p>先扯一个题外话。<strong>为什么我们要理解执行上下文这个概念而不是其他？</strong>（<em>一些小伙伴对其他概念可能也有这样的疑问，道理是一样的</em>）</p>
 <p>​    我们都知道，由于流控制语句与函数调用的关系，程序并不是单纯的从上往下执行的。所以要想正确的执行代码，就需要将代码转化为正确的机器码。而这，有两种办法，编译与解释，分别对应了两种语言，编译型语言和解释型语言。</p>
 <p>​    随便一查“JavaScript”，就会看到众多“脚本语言”的字眼。而脚本语言的特点之一，就是解释执行。然而为了解决解释语言解释器低效的问题，浏览器，也就是ECMAScript Implementation，引入Just-in-time编译器（<strong>JIT</strong>）。从而实现了变量提升等解释型语言难以实现的特性。</p>
-<p>​    上面说了这么多，和执行上下文有什么关系，为啥要理解执行上下文？？？好吧，一个点是因为<strong>JIT是基于执行上下文来实现的</strong>。当然还有其他的原因，比如说，为了理解闭包。<strong>闭包的产生条件</strong>，<strong>闭包的工作原理</strong>等都和<strong>执行上下文</strong>有关。<em>（那。。。为什么要理解闭包？因为经常要用啊，此处禁止套娃哈哈）</em></p>
+<p>​    上面说了这么多，和执行上下文有什么关系，为啥要理解执行上下文？？？好吧，一个点是因为<strong>JIT是基于执行上下文来实现的</strong>。当然还有其他的原因，比如说，为了<strong>理解闭包</strong>。<strong>闭包的产生条件</strong>，<strong>闭包的工作原理</strong>等都和<strong>执行上下文</strong>有关。<em>（那。。。为什么要理解闭包？因为经常要用啊，此处禁止套娃哈哈）</em></p>
 <p>​    回归正题，执行上下文是什么？老样子，引用：</p>
 <blockquote>
 <p>An execution context is a specification device that is used to track the runtime evaluation of code by an ECMAScript implementation. </p>
@@ -681,8 +685,8 @@
 <blockquote>
 <p>The execution context stack is used to track execution contexts. The <a href="https://tc39.es/ecma262/#running-execution-context" target="_blank" rel="noopener">running execution context</a> is always the top element of this stack. </p>
 </blockquote>
-<p>​    相信大家对这个栈的疑问并不是很大，只需要明白这里又多了个<strong>当前执行上下文</strong>。有疑问咱们也可以直接点链接进入规范看看，就那么一段两段话的事儿。</p>
-<p>​    好家伙，一个执行上下文整出这么多事儿，那么它到底。。。是啥！</p>
+<p>​    相信大家对这个栈的疑问并不是很大，只需要明白这里又多了个<strong>当前执行上下文</strong>（或者就叫<strong>正在运行的执行上下文</strong>，字太多了，后文就这么称呼）的概念。有疑问咱们也可以直接点链接进入规范看看，就那么一段两段话的事儿。</p>
+<p>​    好家伙，一个执行上下文整出这么多事儿，我还需要其他信息才能知道他是啥！！</p>
 <blockquote>
 <p>An execution context contains whatever implementation specific state is necessary to track the execution progress of its associated code. </p>
 </blockquote>
@@ -691,11 +695,26 @@
 <p>在实现中，执行上下文包含跟踪相关代码的执行进度所必需的，任何特定状态。</p>
 </blockquote>
 <p>​    说了等于没说。。。那不然说这是规范呢！但人还是有要求的：</p>
-<p>其中构成上，至少有六个部分：</p>
+<p>其中构成上，至少有六个部分（<em>我们知道，当我们尝试理解一个新事物的时候，新事物的构成并不一定是最重要的，因为我们可能并没有达到需要了解他的地步，例如，牛奶。</em>）：</p>
 <blockquote>
 <p>code evaluation state，Function，<a href="https://tc39.es/ecma262/#realm" target="_blank" rel="noopener">Realm</a>，ScriptOrModule，LexicalEnvironment，VariableEnvironment</p>
 </blockquote>
-<h2 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h2>
+<p>简单的说下我的理解。</p>
+<p>通过一些component来构成一个执行上下文，描述了其关联的代码所能使用的<strong>外作用域（执行上下文）的变量（通过LexicalEnvironment）</strong>和<strong>内作用域的变量（通过VariableEnvironment）</strong>；这个执行上下文本身的<strong>跟踪（评估）对象</strong>（Function、Script/Module），等等。</p>
+<p>此处我们给出规范中的介绍，其他的不再过多的解释。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.2/postImages/6.30/4NTYQ~HJSES6H6~_9RV83BW.png" alt="components for execution context"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.3/postImages/6.30/VHP4B8LQ@5K_ZCH%285HBQ4~Q.png" alt="additional state components"></p>
+<p>简而言之，</p>
+<blockquote>
+<p>An execution context contains whatever implementation specific state is necessary to track the execution progress of its associated code. </p>
+</blockquote>
+<p><strong>Whatever is necessary.    \（￣︶￣）/ </strong></p>
+<p>类比于牛奶，对于执行上下文的构成我们不需要了解的很深，我们将主要的精力集中在它的<strong>运行机制</strong>上，然而就很简单。</p>
+<p>前面说了，有一个<strong>执行上下文栈</strong>来维护执行上下文。栈顶的执行上下文就是<strong>当前执行上下文</strong>。</p>
+<p>比如说浏览器中，代码刚开始运行，负责<strong>运行JS的线程</strong>就通过某些算法<a href="https://tc39.es/ecma262/#job" target="_blank" rel="noopener">（用来Enqueue Jobs）</a>取得任务，创建第一个执行上下文，然后开始执行，此时也是当前执行上下文，每当遇到新的Function、Modul/Script时，就会创建新的执行上下文，并挂起当前的执行上下文（若没执行完的话），即新执行上下文成为栈顶，当新的执行上下文关联的代码执行完毕，即出栈后，则重新恢复刚刚挂起的执行上下文。</p>
+<p>值得我们注意的只是，每个<strong>当前执行上下文</strong>的作用域，都包含了栈内的其他执行上下文中的作用域。</p>
+<p>好，执行上下文没了。就这？就这。</p>
+<h2 id="待续（闭包）"><a href="#待续（闭包）" class="headerlink" title="待续（闭包）"></a>待续（闭包）</h2>
         </div>
 
         <!-- .entry-content -->
@@ -975,7 +994,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">5.1k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">5.9k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
