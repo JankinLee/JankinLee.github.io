@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">2.3k字</span>
+    <span class="post-count">2.5k字</span>
   </span>
 </span>
 <span class="bull">
@@ -607,7 +607,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">8分钟</span>
+    <span class="post-count">9分钟</span>
   </span>
 </span>
         
@@ -714,7 +714,28 @@
 <p>比如说浏览器中，代码刚开始运行，负责<strong>运行JS的线程</strong>就通过某些算法<a href="https://tc39.es/ecma262/#job" target="_blank" rel="noopener">（用来Enqueue Jobs）</a>取得任务，创建第一个执行上下文，然后开始执行，此时也是当前执行上下文，每当遇到新的Function、Modul/Script时，就会创建新的执行上下文，并挂起当前的执行上下文（若没执行完的话），即新执行上下文成为栈顶，当新的执行上下文关联的代码执行完毕，即出栈后，则重新恢复刚刚挂起的执行上下文。</p>
 <p>值得我们注意的只是，每个<strong>当前执行上下文</strong>的作用域，都包含了栈内的其他执行上下文中的作用域。</p>
 <p>好，执行上下文没了。就这？就这。</p>
-<h2 id="待续（闭包）"><a href="#待续（闭包）" class="headerlink" title="待续（闭包）"></a>待续（闭包）</h2>
+<h2 id="待续（闭包）"><a href="#待续（闭包）" class="headerlink" title="待续（闭包）"></a>待续（闭包）</h2><p>在？先看我的理解。</p>
+<p><strong>闭包，是一种，能够捕获标识符（广义上的变量），携带参数，并且以类似函数的调用方式（<em>closure(arg1, arg2)</em>）调用的，规范类型。</strong></p>
+<p>个人认为，重要的就只有两部分。</p>
+<p>一，咳咳，它是一种规范类型（Specification Type），这是毋庸置疑的，毕竟规范里写的明明白白。</p>
+<p>二，它能够捕获变量，这也是闭包拥有众多适用场景的主要原因。规范中的例子也表明了这一点：</p>
+<blockquote>
+<p>Abstract Closures are created inline as part of other algorithms, shown in the following example.</p>
+<p>1.Let addend be 41.</p>
+<p>2.Let closure be a new <a href="https://tc39.es/ecma262/#sec-abstract-closure" target="_blank" rel="noopener">Abstract Closure</a> with parameters (x) that captures addend and performs the following steps when called:</p>
+<p>​    Return x + addend.</p>
+<p>3.Let val be closure(1).</p>
+<p>4.<a href="https://tc39.es/ecma262/#assert" target="_blank" rel="noopener">Assert</a>: val is 42.</p>
+</blockquote>
+<p>闭包的概念，实际上我认为并不难，难的另有所在。</p>
+<p>在？看规范：</p>
+<blockquote>
+<p><a href="https://tc39.es/ecma262/#sec-abstract-closure" target="_blank" rel="noopener">The Abstract Closure specification type is used to refer to algorithm steps together with a collection of values.</a> </p>
+</blockquote>
+<blockquote>
+<p>抽象闭包规范类型用于引用算法步骤和值的集合。</p>
+</blockquote>
+
         </div>
 
         <!-- .entry-content -->
@@ -994,7 +1015,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">5.9k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">6.2k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
