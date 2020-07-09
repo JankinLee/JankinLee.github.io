@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">2.5k字</span>
+    <span class="post-count">3.7k字</span>
   </span>
 </span>
 <span class="bull">
@@ -607,7 +607,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">9分钟</span>
+    <span class="post-count">13分钟</span>
   </span>
 </span>
         
@@ -665,7 +665,8 @@
 </blockquote>
 <p>只是<strong>作用域</strong>这个概念相比于<strong>执行上下文</strong>来说，前者更偏向于表示代码中<strong>名称（标识符）的可达性</strong>，而后者更偏向于<strong>表示规范中跟踪代码运行的一个程式（device）</strong>。后者的意义显得更加完整一些，当然，实际生活中我们使用的时候不一定用的那么得严谨。</p>
 <h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>前面说，JS中通过执行上下文通过来描述作用域。而作用域链这个概念呢，在规范中是不存在的。</p>
-<p>作用域链，就是当前执行上下文的<strong>两个环境记录（Environment Record，一种记录类型），即词法环境（LexicalEnvironment），和变量环境（VariableEnvironment）以及它们所指向的其他环境记录</strong>。因为这些环境记录，<strong>记录了所有的变量</strong>（whatever var、let、const）、函数、类、模块，对象，内置全局对象，内置全局对象的属性，以及顶级声明<strong>与名称的绑定关系</strong>。</p>
+<p>作用域链，就是当前执行上下文的<strong>两个环境记录（Environment Record，一种记录类型），即词法环境（LexicalEnvironment），和变量环境（VariableEnvironment）以及它们所指向的其他环境记录</strong>。</p>
+<p>这些环境记录，<strong>记录了所有的变量</strong>（whatever var、let、const）、函数、类、模块，对象，内置全局对象，内置全局对象的属性，以及顶级声明<strong>与名称的绑定关系</strong>。简单的来说，即静态作用域（静态作用域与动态作用域的概念。。。下面也有）中所有的名称（标识符）绑定。</p>
 <p>这两个环境记录呢，就是前面所提的<strong>Record类型</strong>，因为其内部的[[OuterEnv]]字段，指向了外部执行上下文的环境记录（没有外部环境记录的，该字段值就为null），很容易抽象成链条的形式，所以被称为作用域链。</p>
 <p>详见规范的<a href="https://tc39.es/ecma262/#sec-environment-records" target="_blank" rel="noopener">8.1节</a>。</p>
 <h3 id="那么，执行上下文到底是个什么东西？"><a href="#那么，执行上下文到底是个什么东西？" class="headerlink" title="那么，执行上下文到底是个什么东西？"></a>那么，执行上下文到底是个什么东西？</h3><p>先扯一个题外话。<strong>为什么我们要理解执行上下文这个概念而不是其他？</strong>（<em>一些小伙伴对其他概念可能也有这样的疑问，道理是一样的</em>）</p>
@@ -714,11 +715,23 @@
 <p>比如说浏览器中，代码刚开始运行，负责<strong>运行JS的线程</strong>就通过某些算法<a href="https://tc39.es/ecma262/#job" target="_blank" rel="noopener">（用来Enqueue Jobs）</a>取得任务，创建第一个执行上下文，然后开始执行，此时也是当前执行上下文，每当遇到新的Function、Modul/Script时，就会创建新的执行上下文，并挂起当前的执行上下文（若没执行完的话），即新执行上下文成为栈顶，当新的执行上下文关联的代码执行完毕，即出栈后，则重新恢复刚刚挂起的执行上下文。</p>
 <p>值得我们注意的只是，每个<strong>当前执行上下文</strong>的作用域，都包含了栈内的其他执行上下文中的作用域。</p>
 <p>好，执行上下文没了。就这？就这。</p>
+<h2 id="其他概念"><a href="#其他概念" class="headerlink" title="其他概念"></a>其他概念</h2><h3 id="名称绑定-amp-绑定关系——值模型、引用模型"><a href="#名称绑定-amp-绑定关系——值模型、引用模型" class="headerlink" title="名称绑定&amp;绑定关系——值模型、引用模型"></a>名称绑定&amp;绑定关系——值模型、引用模型</h3><p>这个概念是对所有编程语言来说的~</p>
+<p>所谓的<strong>名称绑定（Name binding）</strong>，是指将名字和他所要代表的实体联系在一起。通常在编程语言中，名称被称为标识符。一般来说，名称绑定的实体是可以被更换的，这样的名称就是大家熟知的变量，而被绑定的实体则是变量值，通过赋值来更换变量值。</p>
+<p>其中，变量，根据其与绑定的值的关系，可以分为<strong>值模型</strong>和<strong>引用模型</strong>。</p>
+<p>这两种模型的差异导致的主要影响是：一个变量的值被赋予另一个变量，应用值模型时，值会被复制，副本保存在被复制的变量中，两者就此互不相关；而应用引用模型师，只是指针被复制，赋予第二个变量，数据仍然只有一份，若是其中一方修改了指针指向的数据，另一方也能看到同样的变化。</p>
+<p>因此这两个模型，前者更安全，后者对体量巨大的数据则节省了复制的时间和空间。采用引用模型的数据，被称为引用类型，而采用值模型的数据，则被称为值类型。</p>
+<h3 id="JavaScript的参数传递方式"><a href="#JavaScript的参数传递方式" class="headerlink" title="JavaScript的参数传递方式"></a>JavaScript的参数传递方式</h3><p>JavaScript属于动态类型的语言，因为这类语言可以被赋予任何类型的值，所以基本都采用引用模型，JavaScript亦是如此。</p>
+<p>但是值得一提的是，数据的值类型、引用类型和参数传递的两种方式——按值传递、按引用传递，是不同的概念。</p>
+<p><strong>按值传递</strong>将实际参数的值复制到函数的形参中，两者互不干扰；而<strong>按引用传递</strong>是将实际参数的引用传递给形参，相当于在函数内部进行了一次新的名称绑定。</p>
+<p>对于JavaScript的参数传递方式，普遍存在两种声音。但实际上，<strong>JavaScript采用的是按值传递的方式</strong>。</p>
+<p>在JavaScript中的<strong>所有数据都是引用类型</strong>的，只是通过创建新的实例的方式，来保证数字、字符串等数据类型的不可变性。（例如，新建一个基本数据类型，你会发现它也能调用方法）</p>
+<p><strong>对于引用类型的数据，按值传递可以说是自然地选择。</strong>函数对形参的改变，会实际反映到实参上（<em>搞清楚形参与实参哟</em>），这一点与值类型的按引用传递相同；但函数内无法更换实参的引用，对形参重新赋值，仅仅是更换了形参的引用，对实参没有影响，这一点却和值类型的按值传递相同。</p>
+<h3 id="静态作用域与动态作用域"><a href="#静态作用域与动态作用域" class="headerlink" title="静态作用域与动态作用域"></a>静态作用域与动态作用域</h3><p>。。。桥豆麻袋，待我翻下书再补。</p>
 <h2 id="待续（闭包）"><a href="#待续（闭包）" class="headerlink" title="待续（闭包）"></a>待续（闭包）</h2><p>在？先看我的理解。</p>
-<p><strong>闭包，是一种，能够捕获标识符（广义上的变量），携带参数，并且以类似函数的调用方式（<em>closure(arg1, arg2)</em>）调用的，规范类型。</strong></p>
+<p><strong>闭包，是一种，能够捕获标识符（广义上的变量），携带参数，并且以类似函数的调用方式（<em>closure(arg1, arg2)</em>）调用，的规范类型。</strong></p>
 <p>个人认为，重要的就只有两部分。</p>
-<p>一，咳咳，它是一种规范类型（Specification Type），这是毋庸置疑的，毕竟规范里写的明明白白。</p>
-<p>二，它能够捕获变量，这也是闭包拥有众多适用场景的主要原因。规范中的例子也表明了这一点：</p>
+<p>一，咳咳，它是一种规范类型（Specification Type），这是毋庸置疑的，毕竟规范里写的明明白白。（<em>所以我们就像对待Record那样对待它就行啦，如果特别感兴趣，再去思考内存中的闭包到底是怎样的罢——函数</em>）</p>
+<p>二，它能够捕获变量，一旦闭包捕获了变量，那这些变量就不会无缘无故的消失（指垃圾回收），这也是闭包在众多场景出现的主要原因。规范中的例子也表明了这一点：</p>
 <blockquote>
 <p>Abstract Closures are created inline as part of other algorithms, shown in the following example.</p>
 <p>1.Let addend be 41.</p>
@@ -727,14 +740,33 @@
 <p>3.Let val be closure(1).</p>
 <p>4.<a href="https://tc39.es/ecma262/#assert" target="_blank" rel="noopener">Assert</a>: val is 42.</p>
 </blockquote>
-<p>闭包的概念，实际上我认为并不难，难的另有所在。</p>
-<p>在？看规范：</p>
+<p>在？最后感兴趣的可以看看规范对闭包的描述：</p>
 <blockquote>
 <p><a href="https://tc39.es/ecma262/#sec-abstract-closure" target="_blank" rel="noopener">The Abstract Closure specification type is used to refer to algorithm steps together with a collection of values.</a> </p>
 </blockquote>
 <blockquote>
 <p>抽象闭包规范类型用于引用算法步骤和值的集合。</p>
 </blockquote>
+<p>闭包的概念，实际上我认为并不难，难的另有所在。</p>
+<p>其中之一，就是…</p>
+<h3 id="闭包的产生场景"><a href="#闭包的产生场景" class="headerlink" title="闭包的产生场景"></a>闭包的产生场景</h3><p><em>（闭包这块对于我来说还是太难啦，所以这部分就当分享与交流咯~）</em></p>
+<ol>
+<li><p>在需要清除setInterval的地方。</p>
+<p>我们知道，每个setInterval一旦启动，就需要手动清除，并且只能在其回调函数内清除（<em>不然呢不然呢不然呢</em>）。这里的回调函数因为捕获了外部的定时器标识，而生成了闭包。</p>
+</li>
+<li><p>每一个中间模块（即接受别的模块，导出用到了这个模块的新的模块）。</p>
+<p>这里引用一段大神的话。</p>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s/IMgHzeDXIbxMsVomnqx7AQ" target="_blank" rel="noopener"><strong>本质上，JavaScript中并没有自己的模块概念，我们只能使用函数/自执行函数来模拟模块。</strong></a></p>
+<p>现在的前端工程中（ES6的模块语法规范），使用的模块，本质上都是函数或者自执行函数。</p>
+<p>（webpack等打包工具会帮助我们将其打包成为函数）</p>
+</blockquote>
+<p>推荐看大神的这篇文章，有意想不到的收货哦。</p>
+</li>
+<li><p>……<em>（想不到了！！！我好菜。。）</em></p>
+</li>
+</ol>
+<p>另外的难点就是……</p>
 
         </div>
 
@@ -1015,7 +1047,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">6.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">7.3k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
