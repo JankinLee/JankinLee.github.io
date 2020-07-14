@@ -6,7 +6,7 @@
   <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">分类 | 俗人</title>
+  <title itemprop="name">原来React类组件生命周期也能有这么好的学习体验 | 俗人</title>
   
     <link rel="shortcut icon" href="/img/custom/favicon.ico">
   
@@ -544,62 +544,526 @@
 </div>
 <button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
       <!-- body -->
-        <div class="pattern-center-blank"></div>
-  
-  <div class="pattern-center ">
-    <div class="pattern-attachment-img">
-      <img src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/banner/donate.jpg" class="lazyload" onerror="imgError(this,3)"
-        style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-    </div>
-    <header class="pattern-header ">
-      <h1 class="entry-title">
-        </h1>
-      <span class="post-meta-item-icon">
-        <i class="iconfont icon-attention"></i>
-      </span>
-      <span class="post-meta-item-text">本页共<span id="busuanzi_value_page_pv"> </span>次阅读
-      </span>
-    </header>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div class="pattern-center single-center">
+  <!-- 有配图默认渲染第一张 -->
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.4/ACGImages/96.png);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.4/ACGImages/96.png">
   </div>
-  
-  <div id="content" class="site-content">
-    <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
+  <header class="pattern-header single-header">
+    <h1 class="entry-title">原来React类组件生命周期也能有这么好的学习体验</h1>
+    <p class="entry-census">
       
-      <!-- .entry-content -->
+      <span class="post-meta-item">
+        <a href="https://www.laic.club">
+          <img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.1/img/custom/avatar.jpg">
+        </a>
+      </span>
       
+      
+      <span class="post-meta-item">
+        <a href="https://www.laic.club"> Jankin </a>
+      </span>
+      <span class="bull">
+        ·</span>
+      
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span class="post-meta-item-text"> 2020-7-14 </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 浏览数显示 -->
+      <span class="post-meta-item" >
+        <span class="post-meta-item-icon">
+          <i class="iconfont icon-attention"></i>
+        </span>
+        <span class="post-meta-item-text">本文共<span id="busuanzi_value_page_pv"> </span>次阅读
+        </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 字数统计-->
+      <span class="post-meta-item" >
 
+        
+        <!-- 阅读时长统计 -->
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-book"></i>
+    <span class="post-meta-item-text">字数统计: </span>
+    <!-- 安装插件npm install hexo-wordcount --save -->
+    <span class="post-count">4k字</span>
+  </span>
+</span>
+<span class="bull">
+·</span>
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+    <span class="post-meta-item-text">阅读时长≈</span>
+    <span class="post-count">14分钟</span>
+  </span>
+</span>
+        
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 评论数显示 -->
+      <!-- <span class="post-meta-item" >
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              </span class="post-meta-item-text">
+                <span class="valine-comment-count" data-xid="/7141"> </span>
+              </span>
+          </span> -->
+    </p>
+  </header>
+</div>
 
-      <div class="single-reward">
-        <div class="reward-open">赏
-          <div class="reward-main">
-            <ul class="reward-row">
-              <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.2//img/custom/AliPayQR.jpg"></li>
-              <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.2//img/custom/WeChatQR.jpg"></li>
-            </ul>
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content">  -->
+        <!--套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="老前言了"><a href="#老前言了" class="headerlink" title="老前言了"></a>老前言了</h2><p>（<em>这篇文章的主要目的是记录，因为我还没到总结的时候。。文中引用的部分都来自于知乎的<strong><a href="https://zhuanlan.zhihu.com/p/150929928" target="_blank" rel="noopener">LeviDing</a></strong>大佬，瑞思拜</em>）</p>
+<p><code>Hooks</code>突突突地起飞了，理想中应该是不用学类组件中的生命周期了。</p>
+<p>然而现实肯定和理想中的不一样，不然它叫个芽儿的现实。。。那么，生活总要面对，静下心来想想，除了维护以前未重构的业务，类组件还能为我们带来什么？</p>
+<p>首先！面向对象编程全套的软件开发流程诶，搭配面向对象编程的各种项目精细化手段和最佳实践诶。</p>
+<p>个人理解，由于函数式编程的局限（暂时？），可能需要很长一段时间，这种编程范式才能传播开，才能在更广的范围内（不仅于前端，如项目管理，开发流程，项目精细化等等）发展并经受住考验。</p>
+<p>其次！通过类组件的生命周期，我们能切实的参与进React的渲染机制，再结合React的发展，以多种角度，以不同的高度，利用React进行开发（<em>这就是自我发电式学习吗，那还真是有够好笑的呢（ ๑乛◡乛๑）</em>）。</p>
+<p>接下来！接下来啊，接下来没有了（<em>阿这，我想不到了，我好菜T-T</em>）。</p>
+<h2 id="仨阶段（仨阶段有5个小标题不是常识吗）"><a href="#仨阶段（仨阶段有5个小标题不是常识吗）" class="headerlink" title="仨阶段（仨阶段有5个小标题不是常识吗）"></a>仨阶段（<em>仨阶段有5个小标题不是常识吗</em>）</h2><p>我先扯个题外话（<em>嗯，我扯题外话一直可以的┓(´_｀)┏</em>）。</p>
+<p>类组件中，生命周期出现的意义是什么？（<em>为开发人员提供的，参与进React渲染流程，并能进行干涉的，一种手段？？？待研究</em>）Hooks没有生命周期，难道就没有办法做到类组件能做的事了吗？（<em>待研究</em>）</p>
+<p>好！没研究就先回来。</p>
+<h3 id="生命周期总览"><a href="#生命周期总览" class="headerlink" title="生命周期总览"></a>生命周期总览</h3><p>看博客也就图一乐，真要学生命周期害得看图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.4/postImages/7.14/detail.jpg" alt="detail"></p>
+<p>这是原汁原味的图，按照官方的划分，我们从三个阶段依次来理解。</p>
+<p>在其中，我们会讲到废弃的生命周期，因为这不仅能让我们了解React生命周期的发展，还能让我们更好的理解React的渲染流程（<em>在这看渲染流程也就图一乐，真想了解透彻害得看<a href="https://github.com/acdlite/react-fiber-architecture" target="_blank" rel="noopener">Fiber</a>啥的，不过结合起来也不错哦|ू･ω･` )</em>）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.4/postImages/7.14/detail_modified.png" alt="detail_modified"></p>
+<h3 id="挂载阶段"><a href="#挂载阶段" class="headerlink" title="挂载阶段"></a>挂载阶段</h3><p>挂载阶段，就是将组件挂载到DOM树上，需要经过如下：</p>
+<ul>
+<li>constructor</li>
+<li>getDerivedStateFromProps</li>
+<li>UNSAVE_componentWillMount</li>
+<li>render</li>
+<li>（React Updates DOM and refs）</li>
+<li>componentDidMount</li>
+</ul>
+<p>几个过程，其中括号裹住的并不是真实的生命周期，可以理解为衔接两个生命周期的中间过程。（<em>未使用有序列表是因为暂时还未确认实际上的调用顺序是否是这样的，不过至少设计上是这样的。</em>）</p>
+<p>此处需要引用大佬的见解：</p>
+<blockquote>
+<h4 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h4><p>组件的构造函数，第一个被执行。如果在组件中没有显示定义它，则会拥有一个默认的构造函数。如果我们显示定义构造函数，则必须在构造函数第一行执行 <code>super(props)</code>，否则我们无法在构造函数里拿到 this，这些都属于 ES6 的知识。</p>
+<p>在构造函数中，我们一般会做两件事：</p>
+<ol>
+<li><p>初始化 <code>state</code></p>
+</li>
+<li><p>对自定义方法进行 <code>this</code> 的绑定</p>
+<pre class=" language-js"><code class="language-js"><span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+      width<span class="token punctuation">,</span>
+      height<span class="token punctuation">:</span> <span class="token string">'atuo'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>handleChange1 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>handleChange1<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>handleChange2 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>handleChange2<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ol>
+<h4 id="getDerivedStateFromProps"><a href="#getDerivedStateFromProps" class="headerlink" title="getDerivedStateFromProps"></a>getDerivedStateFromProps</h4><p>使用方式：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//static getDerivedStateFromProps(nextProps, prevState)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function">getDerivedStateFromProps</span><span class="token punctuation">(</span>props<span class="token punctuation">,</span> state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//根据 nextProps 和 prevState 计算出预期的状态改变，返回结果会被送给 setState</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>新的 <code>getDerivedStateFromProps</code> 是一个静态函数，所以不能在这函数里使用 <code>this</code>，简单来说就是一个纯函数。也表明了 React 团队想通过这种方式防止开发者滥用这个生命周期函数。每当父组件引发当前组件的渲染过程时，<code>getDerivedStateFromProps</code> 会被调用，这样我们有一个机会可以根据新的 <code>props</code> 和当前的 <code>state</code> 来调整新的 <code>state</code>。</p>
+<p>这个函数会返回一个对象用来更新当前的 <code>state</code>，如果不需要更新可以返回 <code>null</code>。这个生命周期函数用得比较少，主要用于在重新渲染期间手动对滚动位置进行设置等场景中。该函数会在挂载时，在更新时接收到新的 <code>props</code>，调用了 <code>setState</code> 和 <code>forceUpdate</code> 时被调用。</p>
+</blockquote>
+<p>我会这样理解：这个<code>getDerivedStateFromProps</code>生命周期在两个阶段都会被调用。</p>
+<ul>
+<li><p>挂载阶段的<code>constructor</code>之后；</p>
+</li>
+<li><p>更新阶段的<code>props</code>变化之后，通过<code>setState</code>更改状态之后，使用<code>forceUpdate</code>更新之后。</p>
+</li>
+</ul>
+<p>在挂载阶段，个人不太清楚它的应用场景。它既然设计成，并且官方也推荐其，仅用来处理单一更新来源的，随着props更改而更改的状态，就不该在挂载阶段被触发（<em>感觉这个生命周期是需求——根据props更新state，与实际——实现异步渲染以提高应用的交互性，所折中的一种产物，理解有误还望大佬提点</em>）；</p>
+<p>更新阶段，就，就请先往下康。。</p>
+<blockquote>
+<p>新的 <code>getDerivedStateFromProps</code> 实际上与 <code>componentDidUpdate</code> 一起取代了以前的 <code>UNSAFE_componentWillReceiveProps</code> 函数。<code>UNSAFE_componentWillReceiveProps</code> 也是考虑到因为父组件引发渲染可能要根据 <code>props</code> 更新 <code>state</code> 的需要而设立的。</p>
+</blockquote>
+<p>这里的<code>UNSAFE_componentWillReceiveProps</code>即是ReactV16.4之后被废弃，并在React V17出来之后将不再支持的生命周期。</p>
+<p>（<em>对于这段文字，个人认为，<code>componentDidUpdate</code>与<code>componentDidMount</code>是起相同的作用的，前者只是多了用来防止无限循环的参数和对另一个生命周期，<code>getSnapshotBeforeUpdate</code>的支持而已，有误望指出</em>）</p>
+<blockquote>
+<h4 id="UNSAVE-componentWillMount"><a href="#UNSAVE-componentWillMount" class="headerlink" title="UNSAVE_componentWillMount"></a>UNSAVE_componentWillMount</h4><p><code>UNSAFE_componentWillMount()</code> 在挂载之前被调用。它在 <code>render()</code> 之前调用，因此在此方法中同步调用 <code>setState()</code> 不会触发额外渲染。通常，我们建议使用 <code>constructor()</code> 来初始化 <code>state。</code>避免在此方法中引入任何副作用或订阅。如遇此种情况，请改用 <code>componentDidMount()</code>。</p>
+<p>此方法是服务端渲染唯一会调用的生命周期函数。<code>UNSAFE_componentWillMount()</code> 常用于当支持服务器渲染时，需要同步获取数据的场景。</p>
+</blockquote>
+<p>正如大佬所说，在同步渲染中，<code>UNSAVE_componentWillMount</code>中处理各种是没有问题的，但由于框架的发展，需要优化渲染机制，所以以前的这个生命周期函数无法按照期望运行（<em>此处可以去了解一下React的更新，Fiber的引入等等——指我自己，因为我还没怎么看  ＿|￣|●</em>）。</p>
+<p>继续：</p>
+<blockquote>
+<h4 id="render"><a href="#render" class="headerlink" title="render"></a>render</h4><p>这是 React 中最核心的方法，class 组件中唯一必须实现的方法。</p>
+<p>当 <code>render</code> 被调用时，它会检查 <code>this.props</code> 和 <code>this.state</code> 的变化并返回以下类型之一：</p>
+<ul>
+<li>原生的 DOM，如 div</li>
+<li>React 组件</li>
+<li>数组或 Fragment</li>
+<li>Portals（插槽）</li>
+<li>字符串和数字，被渲染成文本节点</li>
+<li>Boolean 或 null，不会渲染任何东西</li>
+</ul>
+<p><code>render()</code> 函数应该是一个纯函数，里面只做一件事，就是返回需要渲染的东西，不应该包含其它的业务逻辑，如数据请求，对于这些业务逻辑请移到 <code>componentDidMount</code> 和 <code>componentDidUpdate</code> 中。</p>
+</blockquote>
+<p>（<em>这里大佬应该是忘记打引号了，实际上应该都是先，生成虚拟DOM。。不过意思到了就行，个人认为第一个类型改为”React元素“会更好，小声bb</em>）</p>
+<blockquote>
+<h4 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h4><p><code>componentDidMount()</code> 会在组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方。这个方法是比较适合添加订阅的地方。如果添加了订阅，请不要忘记在 <code>componentWillUnmount()</code> 里取消订阅</p>
+<p>你可以在 <code>componentDidMount()</code> 里直接调用 <code>setState()</code>。它将触发额外渲染，但此渲染会发生在浏览器更新屏幕之前。如此保证了即使在 <code>render()</code> 两次调用的情况下，用户也不会看到中间状态。</p>
+<p>请谨慎使用该模式，因为它会导致性能问题。通常，你应该在 <code>constructor()</code> 中初始化 <code>state</code>。如果你的渲染依赖于 DOM 节点的大小或位置，比如实现 <code>modals</code> 和 <code>tooltips</code> 等情况下，你可以使用此方式处理</p>
+</blockquote>
+<p>这里第二段中，“它将触发额外渲染，但此渲染会发生在浏览器更新屏幕之前”，不是很能理解到（<em>意思是在<code>componentDidMount</code>调用setState()，会跳过Reconciliation的过程吗，不会被操作中断，直到第二次渲染结束？还是怎么个过程呢。。。</em>），插眼。</p>
+<h3 id="更新阶段"><a href="#更新阶段" class="headerlink" title="更新阶段"></a>更新阶段</h3><p>更新即组件需要重新渲染的阶段，触发的原因可能有<code>props</code>更改，内部状态通过<code>setState</code>更改，发生了<code>forceUpdate</code>。每次更新需要经过的过程是：</p>
+<ul>
+<li>UNSAFE_componentWillReceiveProps</li>
+<li>getDerivedStateFromProps</li>
+<li>shouldComponentUpdate</li>
+<li>UNSAFE_componentWillUpdate</li>
+<li>render</li>
+<li>getSnapshotBeforeUpdate</li>
+<li>（React Updates DOM and refs）</li>
+<li>componentDidUpdate</li>
+</ul>
+<p>写成这样的原因同上，同样引用大佬的解读：</p>
+<blockquote>
+<h4 id="UNSAFE-componentWillReceiveProps"><a href="#UNSAFE-componentWillReceiveProps" class="headerlink" title="UNSAFE_componentWillReceiveProps"></a><code>UNSAFE_componentWillReceiveProps</code></h4><p><code>UNSAFE_componentWillReceiveProps</code> 是考虑到因为父组件引发渲染可能要根据 <code>props</code> 更新 <code>state</code> 的需要而设立的。<code>UNSAFE_componentWillReceiveProps</code> 会在已挂载的组件接收新的 <code>props</code> 之前被调用。如果你需要更新状态以响应 <code>prop</code> 更改（例如，重置它），你可以比较 <code>this.props</code> 和 <code>nextProps</code> 并在此方法中使用 <code>this.setState()</code> 执行 <code>state</code> 转换。</p>
+<p>如果父组件导致组件重新渲染，即使 <code>props</code> 没有更改，也会调用此方法。如果只想处理更改，请确保进行当前值与变更值的比较。在挂载过程中，React 不会针对初始 <code>props</code> 调用 <code>UNSAFE_componentWillReceiveProps()</code>。组件只会在组件的 <code>props</code> 更新时调用此方法。调用 <code>this.setState()</code> 通常不会触发 <code>UNSAFE_componentWillReceiveProps()</code>。</p>
+</blockquote>
+<p>”如果父组件导致组件重新渲染“，这里说的是父组件重新渲染。。。罢？</p>
+<blockquote>
+<h4 id="getDerivedStateFromProps-1"><a href="#getDerivedStateFromProps-1" class="headerlink" title="getDerivedStateFromProps"></a>getDerivedStateFromProps</h4><p>这个方法在挂载阶段已经讲过了，这里不再赘述。记住该函数会在挂载时，在更新时接收到新的 <code>props</code>，调用了 <code>setState</code> 和 <code>forceUpdate</code> 时被调用。它与 <code>componentDidUpdate</code> 一起取代了以前的 <code>UNSAFE_componentWillReceiveProps</code> 函数。</p>
+<h4 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h4><pre class=" language-js"><code class="language-js"><span class="token function">shouldComponentUpdate</span><span class="token punctuation">(</span>nextProps<span class="token punctuation">,</span> nextState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>它有两个参数，根据此函数的返回值来判断是否进行重新渲染，<code>true</code> 表示重新渲染，<code>false</code> 表示不重新渲染，默认返回 <code>true</code>。注意，首次渲染或者当我们调用 <code>forceUpdate</code> 时并不会触发此方法。此方法仅用于性能优化。</p>
+<p>因为默认是返回 <code>true</code>，也就是只要接收到新的属性和调用了 <code>setState</code> 都会触发重新的渲染，这会带来一定的性能问题，所以我们需要将 <code>this.props</code> 与 <code>nextProps</code> 以及 <code>this.state</code> 与 <code>nextState</code> 进行比较来决定是否返回 <code>false</code>，来减少重新渲染，以优化性能。请注意，返回 <code>false</code> 并不会阻止子组件在 <code>state</code> 更改时重新渲染。</p>
+</blockquote>
+<p>这里指的是父组件中的<code>shouldComponentUpdate</code>并不会递归地影响子组件的渲染。</p>
+<blockquote>
+<p>但是官方提倡我们使用内置的 <code>PureComponent</code> 来减少重新渲染的次数，而不是手动编写 <code>shouldComponentUpdate</code> 代码。<code>PureComponent</code> 内部实现了对 props 和 <code>state</code> 进行浅层比较。</p>
+<p>如果 <code>shouldComponentUpdate()</code> 返回 <code>false</code>，则不会调用 <code>UNSAFE_componentWillUpdate()</code>，<code>render()</code> 和 <code>componentDidUpdate()</code>。官方说在后续版本，React 可能会将 <code>shouldComponentUpdate</code> 视为提示而不是严格的指令，并且，当返回 <code>false</code> 时，仍可能导致组件重新渲染。</p>
+</blockquote>
+<p>这应该也是官方推荐使用内置实现的<code>PureComponent</code>的理由，当<code>shouldComponentUpdate</code>逐渐成为一种决定是否渲染的权重时，可能会有新的变动。</p>
+<blockquote>
+<h4 id="UNSAFE-componentWillUpdate"><a href="#UNSAFE-componentWillUpdate" class="headerlink" title="UNSAFE_componentWillUpdate"></a><code>UNSAFE_componentWillUpdate</code></h4><p>当组件收到新的 <code>props</code> 或 <code>state</code> 时，会在渲染之前调用 <code>UNSAFE_componentWillUpdate()</code>。使用此作为在更新发生之前执行准备更新的机会。初始渲染不会调用此方法。但是你不能此方法中调用 <code>this.setState()</code>。在 <code>UNSAFE_componentWillUpdate()</code> 返回之前，你也不应该执行任何其他操作（例如，<code>dispatch</code> Redux 的 <code>action</code>）触发对 React 组件的更新。</p>
+<p>通常，此方法可以替换为 <code>componentDidUpdate()</code>。如果你在此方法中读取 DOM 信息（例如，为了保存滚动位置），则可以将此逻辑移至 <code>getSnapshotBeforeUpdate()</code> 中。</p>
+<h4 id="render-1"><a href="#render-1" class="headerlink" title="render"></a><strong>render</strong></h4><p>这个方法在挂载阶段已经讲过了，这里不再赘述。</p>
+</blockquote>
+<p>这俩没什么好说的，大概。  ⊙(・◇・)？</p>
+<blockquote>
+<h4 id="getSnapshotBeforeUpdate"><a href="#getSnapshotBeforeUpdate" class="headerlink" title="getSnapshotBeforeUpdate"></a>getSnapshotBeforeUpdate</h4><pre class=" language-js"><code class="language-js"><span class="token function">getSnapshotBeforeUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>getSnapshotBeforeUpdate</code> 生命周期方法在 <code>render</code> 之后，在更新之前（如：更新 DOM 之前）被调用。给了一个机会去获取 DOM 信息，计算得到并返回一个 <code>snapshot</code>，这个 <code>snapshot</code> 会作为 <code>componentDidUpdate</code> 的第三个参数传入。如果你不想要返回值，请返回 <code>null</code>，不写的话控制台会有警告。</p>
+<p>并且，这个方法一定要和 <code>componentDidUpdate</code> 一起使用，否则控制台也会有警告。<code>getSnapshotBeforeUpdate</code> 与 <code>componentDidUpdate</code> 一起，这个新的生命周期涵盖过时的 <code>UNSAFE_componentWillUpdate</code> 的所有用例。</p>
+<pre class=" language-js"><code class="language-js"><span class="token function">getSnapshotBeforeUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'#enter getSnapshotBeforeUpdate'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token string">'foo'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">componentDidUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">,</span> snapshot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'#enter componentDidUpdate snapshot = '</span><span class="token punctuation">,</span> snapshot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上面这段代码可以看出来这个 <code>snapshot</code> 怎么个用法，<code>snapshot</code> 乍一看还以为是组件级别的某个“快照”，其实可以是任何值，到底怎么用完全看开发者自己，<code>getSnapshotBeforeUpdate</code> 把 <code>snapshot</code> 返回，然后 DOM 改变，然后 <code>snapshot</code> 传递给 <code>componentDidUpdate</code>。</p>
+<p>官方给了一个例子，用 <code>getSnapshotBeforeUpdate</code> 来处理 <code>scroll</code>，并且说明了通常不需要这个函数，只有在重新渲染过程中手动保留滚动位置等情况下非常有用，所以大部分开发者都用不上，也就不要乱用。</p>
+</blockquote>
+<p>阿巴阿巴，懂乐懂乐。</p>
+<blockquote>
+<h4 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h4><pre class=" language-js"><code class="language-js"><span class="token function">componentDidUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">,</span> snapshot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>componentDidUpdate()</code> 会在更新后会被立即调用。首次渲染不会执行此方法。在这个函数里我们可以操作 DOM，和发起服务器请求，还可以 <code>setState</code>，但是注意一定要用 <code>if</code> 语句控制，否则会导致无限循环。</p>
+<pre class=" language-js"><code class="language-js"><span class="token function">componentDidUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 典型用法（不要忘记比较 props）：</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>userID <span class="token operator">!==</span> prevProps<span class="token punctuation">.</span>userID<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>userID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>如果组件实现了 <code>getSnapshotBeforeUpdate()</code> 生命周期，则它的返回值将作为 <code>componentDidUpdate()</code> 的第三个参数 <code>snapshot</code> 参数传递。否则此参数将为 undefined。</p>
+</blockquote>
+<h3 id="卸载阶段"><a href="#卸载阶段" class="headerlink" title="卸载阶段"></a>卸载阶段</h3><p>啊啊啊啊啊，总算要完了。</p>
+<ul>
+<li>componentWillUnmount</li>
+</ul>
+<p>是的，没错，只剩最后一个生命周期了，奥利给。</p>
+<blockquote>
+<h4 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h4><p><code>componentWillUnmount()</code> 会在组件卸载及销毁之前直接调用。我们可以在此方法中执行必要的清理操作，例如，清除 timer，取消网络请求或清除在 <code>componentDidMount()</code> 中创建的订阅等。注意不要在这个函数里调用 <code>setState()</code>，因为组件不会重新渲染了。</p>
+</blockquote>
+<p>这里大佬附上了两个<a href="https://zh-hans.reactjs.org/docs/react-component.html#static-getderivedstatefromerror" target="_blank" rel="noopener">不常用的生命周期</a>，有空也可以过一遍。</p>
+<blockquote>
+<p>详细使用示例请见：<strong>React 官方文档[3]</strong></p>
+<h4 id="static-getDerivedStateFromError"><a href="#static-getDerivedStateFromError" class="headerlink" title="static getDerivedStateFromError()"></a>static getDerivedStateFromError()</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">static</span> <span class="token function">getDerivedStateFromError</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>此生命周期会在后代组件抛出错误后被调用。它将抛出的错误作为参数，并返回一个值以更新 <code>state</code>。<code>getDerivedStateFromError()</code> 会在渲染阶段调用，因此不允许出现副作用。如遇此类情况，请改用 <code>componentDidCatch()</code>。</p>
+<h4 id="componentDidCatch"><a href="#componentDidCatch" class="headerlink" title="componentDidCatch()"></a>componentDidCatch()</h4><pre class=" language-js"><code class="language-js"><span class="token function">componentDidCatch</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>此生命周期在后代组件抛出错误后被调用。它接收两个参数：</p>
+<ol>
+<li>error —— 抛出的错误。</li>
+<li>info —— 带有 componentStack key 的对象，其中包含有关组件引发错误的栈信息。</li>
+</ol>
+<p><code>componentDidCatch()</code> 会在“提交”阶段被调用，因此允许执行副作用。它应该用于记录错误之类的情况：</p>
+<p>如果发生错误，你可以通过调用 <code>setState</code> 使用 <code>componentDidCatch()</code> 渲染降级 UI，但在未来的版本中将不推荐这样做。可以使用静态 <code>getDerivedStateFromError()</code> 来处理降级渲染。</p>
+</blockquote>
+<h3 id="废弃总结"><a href="#废弃总结" class="headerlink" title="废弃总结"></a>废弃总结</h3><p>上面介绍了一共三个废弃的旧生命周期，即有<code>UNSAFE_</code>前缀的</p>
+<blockquote>
+<ul>
+<li><code>UNSAFE_componentWillMount</code></li>
+<li><code>UNSAFE_componentWillReceiveProps</code></li>
+<li><code>UNSAFE_componentWillUpdate</code></li>
+</ul>
+</blockquote>
+<p>废弃的最关键原因，应该是：</p>
+<blockquote>
+<p>在 React V16.0 之前，React 是同步渲染的，而在 V16.0 之后 React 更新了其渲染机制，是通过异步的方式进行渲染的，在 <code>render</code> 函数之前的所有函数都有可能被执行多次。</p>
+</blockquote>
+<h2 id="就这就这就这？"><a href="#就这就这就这？" class="headerlink" title="就这就这就这？"></a>就这就这就这？</h2><p>感觉哪里不对，奥，这只是生命周期啊，那没事了。  <em>(:ι」∠)</em></p>
+
+        </div>
+
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.2//img/custom/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.2//img/custom/WeChatQR.jpg"></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
-      </div>
-      <footer class="post-footer">
-        <div class="post-lincenses" style="color: #ff9966;">
-          欢迎转载，转载时请注明来源哦！
-          <br>
-          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">
-            <i class="fa fa-creative-commons" aria-hidden="true"></i>知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
         </div>
-        <div class="post-tags">
+        <!-- 评分 -->
+        <div class="single-reward">
+          
+          <!-- 五星评分 -->
+<div id="wpac-rating"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 23889});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+<!-- <a href="https://widgetpack.com" class="wpac-cr">Star Rating WIDGET PACK</a> -->
+          
         </div>
-        <div class="post-share">
-          <div class="social-share sharehidden share-component"></div>
-          <i class="iconfont show-share icon-forward"></i>
+        <!-- 自定义署名方式 -->
+        <footer class="post-footer">
+          <div class="post-lincenses" style="color: #ff9966;">
+            欢迎转载，转载时请注明来源哦！
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" style="color: #ff9966;" target="_blank"
+              rel="nofollow">
+              <i class="fa fa-creative-commons" aria-hidden="true"></i>ncsa4.0</a>
+          </div>
+          
+          <div class="post-tags" style="color: #a39391">
+            <span><i class="fa fa-tags"></i>
+              
+              <a href="/tags/React-Lifecycle-V16-4/" style="color: #716e77;">React_Lifecycle_V16.4<em>·</em></a>
+              
+              <a href="/tags/React-js/" style="color: #716e77;">React.js<em>·</em></a>
+              
+              <a href="/tags/Record/" style="color: #716e77;">Record<em>·</em></a>
+              
+            </span>
+            <span>
+              <i class="iconfont icon-file"></i>
+              
+              <a href="/categories/技术/" style="color: #716e77;">技术</a>
+              
+            </span>
+          </div>
+          
+          <div class="post-share" >
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+        <div class="tag-cloud">
+          <div class="tag-cloud-title">
+          </div>
+          <div class="tag-cloud-tags">
+            <a href="/tags/ECMAScript2021/" style="font-size: 20px; color: #39bae8">ECMAScript2021</a> <a href="/tags/JavaScript/" style="font-size: 20px; color: #39bae8">JavaScript</a> <a href="/tags/React-js/" style="font-size: 10px; color: #f06966">React.js</a> <a href="/tags/React-Lifecycle-V16-4/" style="font-size: 10px; color: #f06966">React_Lifecycle_V16.4</a> <a href="/tags/Record/" style="font-size: 10px; color: #f06966">Record</a> <a href="/tags/web/" style="font-size: 10px; color: #f06966">web</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a>
+          </div>
         </div>
-      </footer><!-- .entry-footer -->
-    </article>
-    <!-- #post-## -->
-    
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+          
+            <div class="post-nepre full next">
+              
+              <a href="/post/d5b6.html" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.1/ACGImages/19.png"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.1/ACGImages/19.png">
+                </div>
+                <span class="label">Next Post</span>
+                <div class="info">
+                  <h3>理解JavaScript的重要概念</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      <!-- 加密文章隐藏评论 -->
+      <section class="comment" >
+        
+    <div id="vcomments"></div>
+    <script src="https://unpkg.com/valine/dist/Valine.min.js"></script><!-- 最新版 -->
+    <style>
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich2.gif") 100% 100% no-repeat;
+    }
+    </style>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            enableQQ: true,
+            boolean: true,
+            appId: 'TEkKGph2kltzvbRY92IQdJ5d-gzGzoHsz',
+            appKey: 'pvcAUxQkuAivlq5kWOMonBA6',
+            //notify: 'false' === 'true',
+            //verify: 'true' === 'true',
+            visitor: 'false' === 'true',
+            avatar: 'monsterid',
+            pageSize: '10',
+            lang: 'en',
+            placeholder: '',
+            requiredFields: ['nick','mail'], //设置必填项
+            // 设置Bilibili表情包地址
+            emojiCDN: '//i0.hdslb.com/bfs/emote/', 
+            // 表情title和图片映射
+            emojiMaps: {
+            "tv_doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
+            "tv_亲亲": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
+            "tv_偷笑": "bb690d4107620f1c15cff29509db529a73aee261.png",
+            "tv_再见": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
+            "tv_冷漠": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
+            "tv_发怒": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
+            "tv_发财": "34db290afd2963723c6eb3c4560667db7253a21a.png",
+            "tv_可爱": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
+            "tv_吐血": "09dd16a7aa59b77baa1155d47484409624470c77.png",
+            "tv_呆": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
+            "tv_呕吐": "9f996894a39e282ccf5e66856af49483f81870f3.png",
+            "tv_困": "241ee304e44c0af029adceb294399391e4737ef2.png",
+            "tv_坏笑": "1f0b87f731a671079842116e0991c91c2c88645a.png",
+            "tv_大佬": "093c1e2c490161aca397afc45573c877cdead616.png",
+            "tv_大哭": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
+            "tv_委屈": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
+            "tv_害羞": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
+            "tv_尴尬": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
+            "tv_微笑": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
+            "tv_思考": "90cf159733e558137ed20aa04d09964436f618a1.png",
+            "tv_惊吓": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png",
+            "tv_打脸": "56ab10b624063e966bfcb76ea5dc4794d87dfd47.png",
+            "tv_抓狂": "fe31c08edad661d63762b04e17b8d5ae3c71a757.png",
+            "tv_抠鼻": "c666f55e88d471e51bbd9fab9bb308110824a6eb.png",
+            "tv_斜眼笑": "911f987aa8bc1bee12d52aafe62bc41ef4474e6c.png",
+            "tv_无奈": "ea8ed89ee9878f2fece2dda0ea8a5dbfe21b5751.png",
+            "tv_晕": "5443c22b4d07fb1907ccc610c8e6db254f2461b7.png",
+            "tv_流汗": "cead1c351ab8d79e9f369605beb90148db0fbed3.png",
+            "tv_流泪": "7e71cde7858f0cd50d74b0264aa26db612a8a167.png",
+            "tv_流鼻血": "c32d39db2737f89b904ca32700d140a9241b0767.png",
+            "tv_点赞": "f85c354995bd99e28fc76c869bfe42ba6438eff4.png",
+            "tv_生气": "26702dcafdab5e8225b43ffd23c94ac1ff932654.png",
+            "tv_生病": "8b0ec90e6b86771092a498c54f09fc94621c1900.png",
+            "tv_疑问": "0793d949b18d7be716078349c202c15ff166f314.png",
+            "tv_白眼": "c1d59f439e379ee50eef488bcb5e5378e5044ea4.png",
+            "tv_皱眉": "72ccad6679fea0d14cce648b4d818e09b8ffea2d.png",
+            "tv_目瞪口呆": "0b8cb81a68de5d5365212c99375e7ace3e7891b7.png",
+            "tv_睡着": "8b196675b53af58264f383c50ad0945048290b33.png",
+            "tv_笑哭": "1abc628f6d4f4caf9d0e7800878f4697abbc8273.png",
+            "tv_腼腆": "89712c0d4af73e67f89e35cbc518420380a7f6f4.png",
+            "tv_色": "61822c7e9aae5da76475e7892534545336b23a6f.png",
+            "tv_调侃": "4bc022533ef31544ca0d72c12c808cf4a1cce3e3.png",
+            "tv_调皮": "b9c41de8e82dd7a8515ae5e3cb63e898bf245186.png",
+            "tv_鄙视": "6e72339f346a692a495b123174b49e4e8e781303.png",
+            "tv_闭嘴": "c9e990da7f6e93975e25fd8b70e2e290aa4086ef.png",
+            "tv_难过": "87f46748d3f142ebc6586ff58860d0e2fc8263ba.png",
+            "tv_馋": "fc7e829b845c43c623c8b490ee3602b7f0e76a31.png",
+            "tv_鬼脸": "0ffbbddf8a94d124ca2f54b360bbc04feb6bbfea.png",
+            "tv_黑人问号": "45821a01f51bc867da9edbaa2e070410819a95b2.png",
+            "tv_鼓掌": "1d21793f96ef4e6f48b23e53e3b9e42da833a0f6.png"
+                // ... 更多表情
+            }
+        });
+    </script>
+
+    <!--  -->
+
+
+
+      </section>
+      <!-- 加密文章隐藏作者信息 -->
+      
+      <section class="author-profile" >
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="https://www.laic.club" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.1/img/custom/avatar.jpg" itemprop="image"
+              alt="Jankin" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="https://www.laic.club" itemprop="url" rel="author">Jankin</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>你喜欢独处，却又担心寂寞，于是你爱上一阵又一阵迎面吹来的风</p>
+      </section>
+      
+    </main><!-- #main -->
   </div><!-- #primary -->
-  </div>
+</div>
+
+
+<!--评论配置-->
 
       <!-- body.end -->
     </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-13T13:29:14.576Z</updated>
+  <updated>2020-07-14T13:42:47.961Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>原来React类组件生命周期也能有这么好的学习体验</title>
+    <link href="/post/7141.html"/>
+    <id>/post/7141.html</id>
+    <published>2020-07-14T08:11:35.000Z</published>
+    <updated>2020-07-14T13:42:47.961Z</updated>
+    
+    <summary type="html">
+    
+      真——体系化弄懂在V16.4之后，直至现在都未改变的React类组件的生命周期！
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="React_Lifecycle_V16.4" scheme="/tags/React-Lifecycle-V16-4/"/>
+    
+      <category term="React.js" scheme="/tags/React-js/"/>
+    
+      <category term="Record" scheme="/tags/Record/"/>
+    
+  </entry>
   
   <entry>
     <title>理解JavaScript的重要概念</title>
