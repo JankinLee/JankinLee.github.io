@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-13T13:29:14.576Z</updated>
+  <updated>2020-07-14T13:11:22.170Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>原来React类组件生命周期也能有这么好的学习体验</title>
+    <link href="/post/7141.html"/>
+    <id>/post/7141.html</id>
+    <published>2020-07-14T08:11:35.000Z</published>
+    <updated>2020-07-14T13:11:22.170Z</updated>
+    
+    <summary type="html">
+    
+      真——体系化弄懂在V16.4之后，直至现在都未改变的React类组件的生命周期！
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="React_Lifecycle_V16.4" scheme="/tags/React-Lifecycle-V16-4/"/>
+    
+  </entry>
   
   <entry>
     <title>理解JavaScript的重要概念</title>
@@ -43,7 +63,7 @@
     <link href="/post/6251.html"/>
     <id>/post/6251.html</id>
     <published>2020-06-25T14:56:22.000Z</published>
-    <updated>2020-06-26T05:02:45.243Z</updated>
+    <updated>2020-07-14T13:14:39.755Z</updated>
     
     <summary type="html">
     
@@ -57,28 +77,6 @@
       <category term="ECMAScript2021" scheme="/tags/ECMAScript2021/"/>
     
       <category term="JavaScript" scheme="/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-Theme-Sakura</title>
-    <link href="/post/5742.html"/>
-    <id>/post/5742.html</id>
-    <published>2020-05-02T04:16:01.000Z</published>
-    <updated>2020-06-23T00:38:32.821Z</updated>
-    
-    <summary type="html">
-    
-      hexo-sakura主题使用教程
-    
-    </summary>
-    
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="web" scheme="/tags/web/"/>
-    
-      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
     
   </entry>
   

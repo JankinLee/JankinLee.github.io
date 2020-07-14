@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">941字</span>
+    <span class="post-count">946字</span>
   </span>
 </span>
 <span class="bull">
@@ -637,7 +637,18 @@
         <!--套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="我不知道的ECMAScript2021——‘-’比较"><a href="#我不知道的ECMAScript2021——‘-’比较" class="headerlink" title="我不知道的ECMAScript2021——‘==’比较"></a>我不知道的ECMAScript2021——‘==’比较</h2><blockquote>
+          <h2 id="我不知道的ECMAScript2021——‘-’比较"><a href="#我不知道的ECMAScript2021——‘-’比较" class="headerlink" title="我不知道的ECMAScript2021——‘==’比较"></a>我不知道的ECMAScript2021——‘==’比较</h2><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>简单总结一下==比较的算法规则：</p>
+<ol>
+<li>首先==两边的操作数是否是同一类型，如果是，则同===比较。</li>
+<li>两个操作数都是基本数据类型（Number，String，Boolean，BigInt，Symbol）：<ul>
+<li>一个 操作数是Numeric（Number、BigInt），则将另外一个操作数转成对应的数值类型来比较。</li>
+<li>一个操作数是Boolean，则将Boolean转化成Number，再进行比较。</li>
+</ul>
+</li>
+<li>一个操作数是对象，则通过ToPrimitive ( input [ , PreferredType ] )，将对象转换成基本数据类型再比较。</li>
+</ol>
+<p>经过转换，很多最后都会变成数值之间的比较，如果<a href="https://tc39.es/ecma262/#mathematical-value" target="_blank" rel="noopener">mathematical value</a>的值相等，那返回<strong>true</strong>，否则为<strong>false</strong>。需要注意的是，<strong>NaN</strong>, <strong>+∞</strong>,  <strong>-∞</strong>的出现，就代表了整个比较的结果为<strong>false</strong>。</p>
+<h3 id="结论来源："><a href="#结论来源：" class="headerlink" title="结论来源："></a>结论来源：</h3><blockquote>
 <p>引自 ‘Draft ECMA-262 / June 23, 2020 ECMAScript® 2021 Language Specification’</p>
 </blockquote>
 <blockquote>
@@ -681,22 +692,11 @@
 </li>
 </ol>
 </blockquote>
-<h2 id="注意与解读"><a href="#注意与解读" class="headerlink" title="注意与解读"></a>注意与解读</h2><p>需要注意上文中的！与？，并不是JS的操作符，而是规范中运行时语义（Runtime Semantic）——ReturnIfAbrupt的shorthand。其中！与？的区别主要在调用语义处返回的Completion Record的类型（[[Type]]）上，在这里讨论的==比较中应该没什么影响，详情见规范的第五章第二节和第七章第二节：</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>需要注意上文中的！与？，并不是JS的操作符，而是规范中运行时语义（Runtime Semantic）——ReturnIfAbrupt的shorthand。其中！与？的区别主要在调用语义处返回的Completion Record的类型（[[Type]]）上，在这里讨论的==比较中应该没什么影响，详情见规范的第五章第二节和第七章第二节：</p>
 <blockquote>
 <p>Invocations of <a href="https://tc39.es/ecma262/#sec-algorithm-conventions-abstract-operations" target="_blank" rel="noopener">abstract operations</a> and syntax-directed operations that are prefixed by <code>?</code> indicate that <a href="https://tc39.es/ecma262/#sec-returnifabrupt" target="_blank" rel="noopener">ReturnIfAbrupt</a> should be applied to the resulting <a href="https://tc39.es/ecma262/#sec-completion-record-specification-type" target="_blank" rel="noopener">Completion Record</a>. </p>
 <p>Similarly, prefix <code>!</code> is used to indicate that the following invocation of an abstract or <a href="https://tc39.es/ecma262/#sec-algorithm-conventions-syntax-directed-operations" target="_blank" rel="noopener">syntax-directed operation</a> will never return an <a href="https://tc39.es/ecma262/#sec-completion-record-specification-type" target="_blank" rel="noopener">abrupt completion</a> and that the resulting <a href="https://tc39.es/ecma262/#sec-completion-record-specification-type" target="_blank" rel="noopener">Completion Record</a>‘s [[Value]] field should be used in place of the return value of the operation. </p>
 </blockquote>
-<p>简单总结一下==比较的算法规则：</p>
-<ol>
-<li>首先==两边的操作数是否是同一类型，如果是，则同===比较。</li>
-<li>两个操作数都是基本数据类型（Number，String，Boolean，BigInt，Symbol）：<ul>
-<li>一个 操作数是Numeric（Number、BigInt），则将另外一个操作数转成对应的数值类型来比较。</li>
-<li>一个操作数是Boolean，则将Boolean转化成Number，再进行比较。</li>
-</ul>
-</li>
-<li>一个操作数是对象，则通过ToPrimitive ( input [ , PreferredType ] )，将对象转换成基本数据类型再比较。</li>
-</ol>
-<p>经过转换，很多最后都会变成数值之间的比较，如果<a href="https://tc39.es/ecma262/#mathematical-value" target="_blank" rel="noopener">mathematical value</a>的值相等，那返回<strong>true</strong>，否则为<strong>false</strong>。需要注意的是，<strong>NaN</strong>, <strong>+∞</strong>,  <strong>-∞</strong>的出现，就代表了整个比较的结果为<strong>false</strong>。</p>
 <p>ToPrimitive ( input [ , PreferredType ] )的转化规则如下，仅需要注意，其中用到的toString等函数可能是被内置覆盖了的，如[].toString()，其他的就不做更多的解读了：</p>
 <blockquote>
 <h1 id="7-1-1-ToPrimitive-input-PreferredType"><a href="#7-1-1-ToPrimitive-input-PreferredType" class="headerlink" title="7.1.1 ToPrimitive ( input [ , PreferredType ] )"></a>7.1.1 ToPrimitive ( input [ , PreferredType ] )</h1><p>The abstract operation ToPrimitive takes argument input and optional argument PreferredType. It converts its input argument to a non-Object type. If an object is capable of converting to more than one primitive type, it may use the optional hint PreferredType to favour that type. It performs the following steps when called:</p>
@@ -826,7 +826,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <div class="tag-cloud-title">
           </div>
           <div class="tag-cloud-tags">
-            <a href="/tags/ECMAScript2021/" style="font-size: 10px; color: #f06966">ECMAScript2021</a> <a href="/tags/JavaScript/" style="font-size: 10px; color: #f06966">JavaScript</a> <a href="/tags/web/" style="font-size: 10px; color: #f06966">web</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a>
+            <a href="/tags/ECMAScript2021/" style="font-size: 20px; color: #39bae8">ECMAScript2021</a> <a href="/tags/JavaScript/" style="font-size: 20px; color: #39bae8">JavaScript</a> <a href="/tags/React-Lifecycle-V16-4/" style="font-size: 10px; color: #f06966">React_Lifecycle_V16.4</a> <a href="/tags/web/" style="font-size: 10px; color: #f06966">web</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a>
           </div>
         </div>
       </article>
@@ -855,15 +855,15 @@ wpac_init.push({widget: 'Rating', id: 23889});
           
           <div class="post-nepre half next">
             
-              <a href="/post/5742.html" rel="next">
+              <a href="/post/3eeb.html" rel="next">
                 <div class="background">
-                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.1/img/other/donate.jpg"
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.1/img/banner/5.jpg"
                     style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
-                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.1/img/other/donate.jpg">
+                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.1/img/banner/5.jpg">
                 </div>
                 <span class="label">Next Post</span>
                 <div class="info">
-                  <h3>Hexo-Theme-Sakura</h3>
+                  <h3>Hello World</h3>
                   <hr>
                 </div>
               </a>
@@ -1052,7 +1052,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">7.7k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">9.1k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
