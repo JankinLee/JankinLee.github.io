@@ -664,7 +664,7 @@
 <p>几个过程，其中括号裹住的并不是真实的生命周期，可以理解为衔接两个生命周期的中间过程。（<em>未使用有序列表是因为暂时还未确认实际上的调用顺序是否是这样的，不过至少设计上是这样的。</em>）</p>
 <p>此处需要引用大佬的见解：</p>
 <blockquote>
-<h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><p>组件的构造函数，第一个被执行。如果在组件中没有显示定义它，则会拥有一个默认的构造函数。如果我们显示定义构造函数，则必须在构造函数第一行执行 <code>super(props)</code>，否则我们无法在构造函数里拿到 this，这些都属于 ES6 的知识。</p>
+<h4 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h4><p>组件的构造函数，第一个被执行。如果在组件中没有显示定义它，则会拥有一个默认的构造函数。如果我们显示定义构造函数，则必须在构造函数第一行执行 <code>super(props)</code>，否则我们无法在构造函数里拿到 this，这些都属于 ES6 的知识。</p>
 <p>在构造函数中，我们一般会做两件事：</p>
 <ol>
 <li><p>初始化 <code>state</code></p>
@@ -684,7 +684,7 @@
 </code></pre>
 </li>
 </ol>
-<h3 id="getDerivedStateFromProps"><a href="#getDerivedStateFromProps" class="headerlink" title="getDerivedStateFromProps"></a>getDerivedStateFromProps</h3><p>使用方式：</p>
+<h4 id="getDerivedStateFromProps"><a href="#getDerivedStateFromProps" class="headerlink" title="getDerivedStateFromProps"></a>getDerivedStateFromProps</h4><p>使用方式：</p>
 <pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//static getDerivedStateFromProps(nextProps, prevState)</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -712,13 +712,13 @@
 <p>这里的<code>UNSAFE_componentWillReceiveProps</code>即是ReactV16.4之后被废弃，并在React V17出来之后将不再支持的生命周期。</p>
 <p>（<em>对于这段文字，个人认为，<code>componentDidUpdate</code>与<code>componentDidMount</code>是起相同的作用的，前者只是多了用来防止无限循环的参数和对另一个生命周期，<code>getSnapshotBeforeUpdate</code>的支持而已，有误望指出</em>）</p>
 <blockquote>
-<h3 id="UNSAVE-componentWillMount"><a href="#UNSAVE-componentWillMount" class="headerlink" title="UNSAVE_componentWillMount"></a>UNSAVE_componentWillMount</h3><p><code>UNSAFE_componentWillMount()</code> 在挂载之前被调用。它在 <code>render()</code> 之前调用，因此在此方法中同步调用 <code>setState()</code> 不会触发额外渲染。通常，我们建议使用 <code>constructor()</code> 来初始化 <code>state。</code>避免在此方法中引入任何副作用或订阅。如遇此种情况，请改用 <code>componentDidMount()</code>。</p>
+<h4 id="UNSAVE-componentWillMount"><a href="#UNSAVE-componentWillMount" class="headerlink" title="UNSAVE_componentWillMount"></a>UNSAVE_componentWillMount</h4><p><code>UNSAFE_componentWillMount()</code> 在挂载之前被调用。它在 <code>render()</code> 之前调用，因此在此方法中同步调用 <code>setState()</code> 不会触发额外渲染。通常，我们建议使用 <code>constructor()</code> 来初始化 <code>state。</code>避免在此方法中引入任何副作用或订阅。如遇此种情况，请改用 <code>componentDidMount()</code>。</p>
 <p>此方法是服务端渲染唯一会调用的生命周期函数。<code>UNSAFE_componentWillMount()</code> 常用于当支持服务器渲染时，需要同步获取数据的场景。</p>
 </blockquote>
 <p>正如大佬所说，在同步渲染中，<code>UNSAVE_componentWillMount</code>中处理各种是没有问题的，但由于框架的发展，需要优化渲染机制，所以以前的这个生命周期函数无法按照期望运行（<em>此处可以去了解一下React的更新，Fiber的引入等等——指我自己，因为我还没怎么看  ＿|￣|●</em>）。</p>
 <p>继续：</p>
 <blockquote>
-<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><p>这是 React 中最核心的方法，class 组件中唯一必须实现的方法。</p>
+<h4 id="render"><a href="#render" class="headerlink" title="render"></a>render</h4><p>这是 React 中最核心的方法，class 组件中唯一必须实现的方法。</p>
 <p>当 <code>render</code> 被调用时，它会检查 <code>this.props</code> 和 <code>this.state</code> 的变化并返回以下类型之一：</p>
 <ul>
 <li>原生的 DOM，如 div</li>
@@ -732,7 +732,7 @@
 </blockquote>
 <p>（<em>这里大佬应该是忘记打引号了，实际上应该都是先，生成虚拟DOM。。不过意思到了就行，个人认为第一个类型改为”React元素“会更好，小声bb</em>）</p>
 <blockquote>
-<h3 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a><strong>componentDidMount</strong></h3><p><code>componentDidMount()</code> 会在组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方。这个方法是比较适合添加订阅的地方。如果添加了订阅，请不要忘记在 <code>componentWillUnmount()</code> 里取消订阅</p>
+<h4 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h4><p><code>componentDidMount()</code> 会在组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方。这个方法是比较适合添加订阅的地方。如果添加了订阅，请不要忘记在 <code>componentWillUnmount()</code> 里取消订阅</p>
 <p>你可以在 <code>componentDidMount()</code> 里直接调用 <code>setState()</code>。它将触发额外渲染，但此渲染会发生在浏览器更新屏幕之前。如此保证了即使在 <code>render()</code> 两次调用的情况下，用户也不会看到中间状态。</p>
 <p>请谨慎使用该模式，因为它会导致性能问题。通常，你应该在 <code>constructor()</code> 中初始化 <code>state</code>。如果你的渲染依赖于 DOM 节点的大小或位置，比如实现 <code>modals</code> 和 <code>tooltips</code> 等情况下，你可以使用此方式处理</p>
 </blockquote>
@@ -750,13 +750,13 @@
 </ul>
 <p>写成这样的原因同上，同样引用大佬的解读：</p>
 <blockquote>
-<h3 id="UNSAFE-componentWillReceiveProps"><a href="#UNSAFE-componentWillReceiveProps" class="headerlink" title="UNSAFE_componentWillReceiveProps"></a><code>UNSAFE_componentWillReceiveProps</code></h3><p><code>UNSAFE_componentWillReceiveProps</code> 是考虑到因为父组件引发渲染可能要根据 <code>props</code> 更新 <code>state</code> 的需要而设立的。<code>UNSAFE_componentWillReceiveProps</code> 会在已挂载的组件接收新的 <code>props</code> 之前被调用。如果你需要更新状态以响应 <code>prop</code> 更改（例如，重置它），你可以比较 <code>this.props</code> 和 <code>nextProps</code> 并在此方法中使用 <code>this.setState()</code> 执行 <code>state</code> 转换。</p>
+<h4 id="UNSAFE-componentWillReceiveProps"><a href="#UNSAFE-componentWillReceiveProps" class="headerlink" title="UNSAFE_componentWillReceiveProps"></a><code>UNSAFE_componentWillReceiveProps</code></h4><p><code>UNSAFE_componentWillReceiveProps</code> 是考虑到因为父组件引发渲染可能要根据 <code>props</code> 更新 <code>state</code> 的需要而设立的。<code>UNSAFE_componentWillReceiveProps</code> 会在已挂载的组件接收新的 <code>props</code> 之前被调用。如果你需要更新状态以响应 <code>prop</code> 更改（例如，重置它），你可以比较 <code>this.props</code> 和 <code>nextProps</code> 并在此方法中使用 <code>this.setState()</code> 执行 <code>state</code> 转换。</p>
 <p>如果父组件导致组件重新渲染，即使 <code>props</code> 没有更改，也会调用此方法。如果只想处理更改，请确保进行当前值与变更值的比较。在挂载过程中，React 不会针对初始 <code>props</code> 调用 <code>UNSAFE_componentWillReceiveProps()</code>。组件只会在组件的 <code>props</code> 更新时调用此方法。调用 <code>this.setState()</code> 通常不会触发 <code>UNSAFE_componentWillReceiveProps()</code>。</p>
 </blockquote>
 <p>”如果父组件导致组件重新渲染“，这里说的是父组件重新渲染。。。罢？</p>
 <blockquote>
-<h3 id="getDerivedStateFromProps-1"><a href="#getDerivedStateFromProps-1" class="headerlink" title="getDerivedStateFromProps"></a>getDerivedStateFromProps</h3><p>这个方法在挂载阶段已经讲过了，这里不再赘述。记住该函数会在挂载时，在更新时接收到新的 <code>props</code>，调用了 <code>setState</code> 和 <code>forceUpdate</code> 时被调用。它与 <code>componentDidUpdate</code> 一起取代了以前的 <code>UNSAFE_componentWillReceiveProps</code> 函数。</p>
-<h3 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h3><pre class=" language-js"><code class="language-js"><span class="token function">shouldComponentUpdate</span><span class="token punctuation">(</span>nextProps<span class="token punctuation">,</span> nextState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h4 id="getDerivedStateFromProps-1"><a href="#getDerivedStateFromProps-1" class="headerlink" title="getDerivedStateFromProps"></a>getDerivedStateFromProps</h4><p>这个方法在挂载阶段已经讲过了，这里不再赘述。记住该函数会在挂载时，在更新时接收到新的 <code>props</code>，调用了 <code>setState</code> 和 <code>forceUpdate</code> 时被调用。它与 <code>componentDidUpdate</code> 一起取代了以前的 <code>UNSAFE_componentWillReceiveProps</code> 函数。</p>
+<h4 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h4><pre class=" language-js"><code class="language-js"><span class="token function">shouldComponentUpdate</span><span class="token punctuation">(</span>nextProps<span class="token punctuation">,</span> nextState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">//...</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -770,13 +770,13 @@
 </blockquote>
 <p>这应该也是官方推荐使用内置实现的<code>PureComponent</code>的理由，当<code>shouldComponentUpdate</code>逐渐成为一种决定是否渲染的权重时，可能会有新的变动。</p>
 <blockquote>
-<h3 id="UNSAFE-componentWillUpdate"><a href="#UNSAFE-componentWillUpdate" class="headerlink" title="UNSAFE_componentWillUpdate"></a><code>UNSAFE_componentWillUpdate</code></h3><p>当组件收到新的 <code>props</code> 或 <code>state</code> 时，会在渲染之前调用 <code>UNSAFE_componentWillUpdate()</code>。使用此作为在更新发生之前执行准备更新的机会。初始渲染不会调用此方法。但是你不能此方法中调用 <code>this.setState()</code>。在 <code>UNSAFE_componentWillUpdate()</code> 返回之前，你也不应该执行任何其他操作（例如，<code>dispatch</code> Redux 的 <code>action</code>）触发对 React 组件的更新。</p>
+<h4 id="UNSAFE-componentWillUpdate"><a href="#UNSAFE-componentWillUpdate" class="headerlink" title="UNSAFE_componentWillUpdate"></a><code>UNSAFE_componentWillUpdate</code></h4><p>当组件收到新的 <code>props</code> 或 <code>state</code> 时，会在渲染之前调用 <code>UNSAFE_componentWillUpdate()</code>。使用此作为在更新发生之前执行准备更新的机会。初始渲染不会调用此方法。但是你不能此方法中调用 <code>this.setState()</code>。在 <code>UNSAFE_componentWillUpdate()</code> 返回之前，你也不应该执行任何其他操作（例如，<code>dispatch</code> Redux 的 <code>action</code>）触发对 React 组件的更新。</p>
 <p>通常，此方法可以替换为 <code>componentDidUpdate()</code>。如果你在此方法中读取 DOM 信息（例如，为了保存滚动位置），则可以将此逻辑移至 <code>getSnapshotBeforeUpdate()</code> 中。</p>
-<h3 id="render-1"><a href="#render-1" class="headerlink" title="render"></a><strong>render</strong></h3><p>这个方法在挂载阶段已经讲过了，这里不再赘述。</p>
+<h4 id="render-1"><a href="#render-1" class="headerlink" title="render"></a><strong>render</strong></h4><p>这个方法在挂载阶段已经讲过了，这里不再赘述。</p>
 </blockquote>
 <p>这俩没什么好说的，大概。  ⊙(・◇・)？</p>
 <blockquote>
-<h3 id="getSnapshotBeforeUpdate"><a href="#getSnapshotBeforeUpdate" class="headerlink" title="getSnapshotBeforeUpdate"></a>getSnapshotBeforeUpdate</h3><pre class=" language-js"><code class="language-js"><span class="token function">getSnapshotBeforeUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h4 id="getSnapshotBeforeUpdate"><a href="#getSnapshotBeforeUpdate" class="headerlink" title="getSnapshotBeforeUpdate"></a>getSnapshotBeforeUpdate</h4><pre class=" language-js"><code class="language-js"><span class="token function">getSnapshotBeforeUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">//...</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -796,7 +796,7 @@
 </blockquote>
 <p>阿巴阿巴，懂乐懂乐。</p>
 <blockquote>
-<h3 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h3><pre class=" language-js"><code class="language-js"><span class="token function">componentDidUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">,</span> snapshot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h4 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h4><pre class=" language-js"><code class="language-js"><span class="token function">componentDidUpdate</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">,</span> snapshot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">//...</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -816,17 +816,17 @@
 </ul>
 <p>是的，没错，只剩最后一个生命周期了，奥利给。</p>
 <blockquote>
-<h3 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h3><p><code>componentWillUnmount()</code> 会在组件卸载及销毁之前直接调用。我们可以在此方法中执行必要的清理操作，例如，清除 timer，取消网络请求或清除在 <code>componentDidMount()</code> 中创建的订阅等。注意不要在这个函数里调用 <code>setState()</code>，因为组件不会重新渲染了。</p>
+<h4 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h4><p><code>componentWillUnmount()</code> 会在组件卸载及销毁之前直接调用。我们可以在此方法中执行必要的清理操作，例如，清除 timer，取消网络请求或清除在 <code>componentDidMount()</code> 中创建的订阅等。注意不要在这个函数里调用 <code>setState()</code>，因为组件不会重新渲染了。</p>
 </blockquote>
 <p>这里大佬附上了两个<a href="https://zh-hans.reactjs.org/docs/react-component.html#static-getderivedstatefromerror" target="_blank" rel="noopener">不常用的生命周期</a>，有空也可以过一遍。</p>
 <blockquote>
 <p>详细使用示例请见：<strong>React 官方文档[3]</strong></p>
-<h3 id="static-getDerivedStateFromError"><a href="#static-getDerivedStateFromError" class="headerlink" title="static getDerivedStateFromError()"></a>static getDerivedStateFromError()</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">static</span> <span class="token function">getDerivedStateFromError</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h4 id="static-getDerivedStateFromError"><a href="#static-getDerivedStateFromError" class="headerlink" title="static getDerivedStateFromError()"></a>static getDerivedStateFromError()</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">static</span> <span class="token function">getDerivedStateFromError</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">//...</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>此生命周期会在后代组件抛出错误后被调用。它将抛出的错误作为参数，并返回一个值以更新 <code>state</code>。<code>getDerivedStateFromError()</code> 会在渲染阶段调用，因此不允许出现副作用。如遇此类情况，请改用 <code>componentDidCatch()</code>。</p>
-<h3 id="componentDidCatch"><a href="#componentDidCatch" class="headerlink" title="componentDidCatch()"></a>componentDidCatch()</h3><pre class=" language-js"><code class="language-js"><span class="token function">componentDidCatch</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h4 id="componentDidCatch"><a href="#componentDidCatch" class="headerlink" title="componentDidCatch()"></a>componentDidCatch()</h4><pre class=" language-js"><code class="language-js"><span class="token function">componentDidCatch</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">//...</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -900,7 +900,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <div class="post-tags" style="color: #a39391">
             <span><i class="fa fa-tags"></i>
               
-              <a href="/tags/React-Lifecycle-V16-4/" style="color: #716e77;">React_Lifecycle_V16.4<em>·</em></a>
+              <a href="/tags/React-Lifecycle-V16-4-React-js-Record/" style="color: #716e77;">React_Lifecycle_V16.4 React.js Record<em>·</em></a>
               
             </span>
             <span>
@@ -920,7 +920,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <div class="tag-cloud-title">
           </div>
           <div class="tag-cloud-tags">
-            <a href="/tags/ECMAScript2021/" style="font-size: 20px; color: #39bae8">ECMAScript2021</a> <a href="/tags/JavaScript/" style="font-size: 20px; color: #39bae8">JavaScript</a> <a href="/tags/React-Lifecycle-V16-4/" style="font-size: 10px; color: #f06966">React_Lifecycle_V16.4</a> <a href="/tags/web/" style="font-size: 10px; color: #f06966">web</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a>
+            <a href="/tags/ECMAScript2021/" style="font-size: 20px; color: #39bae8">ECMAScript2021</a> <a href="/tags/JavaScript/" style="font-size: 20px; color: #39bae8">JavaScript</a> <a href="/tags/React-Lifecycle-V16-4-React-js-Record/" style="font-size: 10px; color: #f06966">React_Lifecycle_V16.4 React.js Record</a> <a href="/tags/web/" style="font-size: 10px; color: #f06966">web</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a>
           </div>
         </div>
       </article>
