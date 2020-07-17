@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">4.8k字</span>
+    <span class="post-count">4.9k字</span>
   </span>
 </span>
 <span class="bull">
@@ -785,14 +785,15 @@
 <p>在JavaScript中的<strong>所有数据都是引用类型</strong>的，只是通过创建新的实例的方式，来保证数字、字符串等数据类型的不可变性。（例如，新建一个基本数据类型，你会发现它也能调用方法）</p>
 <p><strong>对于引用类型的数据，按值传递可以说是自然地选择。</strong>函数对形参的改变，会实际反映到实参上（<em>搞清楚形参与实参哟</em>），这一点与值类型的按引用传递相同；但函数内无法更换实参的引用，对形参重新赋值，仅仅是更换了形参的引用，对实参没有影响，这一点却和值类型的按值传递相同。</p>
 <h3 id="静态作用域与动态作用域"><a href="#静态作用域与动态作用域" class="headerlink" title="静态作用域与动态作用域"></a>静态作用域与动态作用域</h3><p>。。。桥豆麻袋，待我翻下书再补。</p>
-<h3 id="差点忘了this"><a href="#差点忘了this" class="headerlink" title="差点忘了this"></a>差点忘了this</h3><p>由于JavaScript自己的执行上下文，闭包等，并不能做到一个需求——<strong>在对象内部的方法中，人为地指定使用对象内部的某个属性</strong>。所以，有了this机制。</p>
-<p>这样想来，我们大可不必将作用域链与this扯到一起。</p>
+<h3 id="差点忘了this"><a href="#差点忘了this" class="headerlink" title="差点忘了this"></a>差点忘了this</h3><p>由于JavaScript自己的执行上下文，闭包等，并不能做到一个需求——<strong>在对象内部的方法中，人为地指定使用对象内部的某个属性</strong>。所以，有了this机制，并且this指向无法更改。</p>
+<p>这样想来，我们大可不必将this与其他奇怪的概念扯到一起，联系一下执行上下文就行了。</p>
 <p>所以，<strong>一般情况下，this 的作用就是在对象的方法中，指向对象本身，方便开发者使用对象的属性</strong>。</p>
 <p>然鹅，为什么要说一般呢（<em>可达鸭眉头一皱，发现事情并不简单(｡•ˇ‸ˇ•｡)</em>）。</p>
 <p>由于设计缺陷（斗胆），<strong>在非严格模式下，this在普通函数中仍然存在，并指向window对象，违背了其出现的意义</strong>。</p>
 <p>而且，由于this的绑定是在创建执行上下文时进行的，因此导致了另一个问题——<strong>在对象方法中嵌套使用函数，其内部this的指向会违背使用直觉</strong>。</p>
-<p>（对于this具体的绑定过程，只是我的推断，但并未验证，望大佬指点。）每当创建函数时，就会创建新的执行上下文，进行this的绑定，当其顺着作用域链查找上临近的一个外层执行上下文时，发现自己是在对象当中创建的，则将this绑定为这个对象；若临近的外层执行上下文中没发现对象，则将this绑定为window或undefined</p>
-<p>因此在对象的方法中，若继续嵌套函数，因为创建新的执行上下文时，临近的执行上下文内并没有对象，所以其内部的this将不再指向对象，发生了重新绑定，变为了window（非严格模式）或undefined。</p>
+<p>（对于this具体的绑定过程，只是我的推断，但并未验证，望大佬指点。）每当创建函数时，就会创建新的执行上下文，进行this的绑定，当其顺着作用域链查找临近的一个外层执行上下文时，发现自己是在对象当中创建的，则将this绑定为这个对象；若临近的外层执行上下文中没发现对象，则将this绑定为window或undefined</p>
+<p>因此在对象的方法中，若继续嵌套函数，由于创建新的执行上下文时，临近的执行上下文内并没有对象（是对象内的方法），所以其内部的this将不再指向对象，发生了重新绑定，变为了window（非严格模式）或undefined。</p>
+<p>当然，若在同样的场景嵌套箭头函数，则不会产生这样的问题，因为箭头函数是不存在自身的this的，换言之，箭头函数不会对内部的this进行绑定。</p>
 <h1 id="阿这，好累啊。。。感谢观看"><a href="#阿这，好累啊。。。感谢观看" class="headerlink" title="阿这，好累啊。。。感谢观看"></a>阿这，好累啊。。。感谢观看</h1>
         </div>
 
@@ -1090,7 +1091,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">13.9k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">14k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
