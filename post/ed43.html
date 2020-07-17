@@ -792,6 +792,7 @@
 <p>compositor thread gathers tile information called <strong>draw quads</strong> to create a <strong>compositor frame</strong>.</p>
 </blockquote>
 <p>他会收集记录小片信息的<strong>draw quads</strong>，然后生成<strong>合成图像</strong>。</p>
+<blockquote>
 <table>
 <thead>
 <tr>
@@ -806,6 +807,7 @@
 </tr>
 </tbody>
 </table>
+</blockquote>
 <p><strong>合成图像</strong>生成之后，就被提交给浏览器进程，同时，合成线程又能生成其他的图像（为页面或为浏览器UI）。浏览器进程又把<strong>合成图像</strong>扔给GPU，让它显示（<em>可能是权限问题，所以要经由浏览器进程之手</em>）。</p>
 <p>像刚刚说的，出现滚动事件，合成线程合成新的图像就完事儿了。</p>
 <p>（合成说起来感觉很复杂，可是这都不是主线程干的事儿，所以不需要像主线程那样会被HTML、CSS、JS耽搁，除非要重新生成图层树。）</p>
