@@ -548,6 +548,85 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
 
+<div class="pattern-center single-center">
+  <!-- 有配图默认渲染第一张 -->
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN/wlop/2_crown_8k.jpg);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN/wlop/2_crown_8k.jpg">
+  </div>
+  <header class="pattern-header single-header">
+    <h1 class="entry-title">学习记录之现代浏览器内部揭秘</h1>
+    <p class="entry-census">
+      
+      <span class="post-meta-item">
+        <a href="https://www.laic.club">
+          <img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.1/img/custom/avatar.jpg">
+        </a>
+      </span>
+      
+      
+      <span class="post-meta-item">
+        <a href="https://www.laic.club"> Jankin </a>
+      </span>
+      <span class="bull">
+        ·</span>
+      
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span class="post-meta-item-text"> 2020-7-16 </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 浏览数显示 -->
+      <span class="post-meta-item" >
+        <span class="post-meta-item-icon">
+          <i class="iconfont icon-attention"></i>
+        </span>
+        <span class="post-meta-item-text">本文共<span id="busuanzi_value_page_pv"> </span>次阅读
+        </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 字数统计-->
+      <span class="post-meta-item" >
+
+        
+        <!-- 阅读时长统计 -->
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-book"></i>
+    <span class="post-meta-item-text">字数统计: </span>
+    <!-- 安装插件npm install hexo-wordcount --save -->
+    <span class="post-count">3.8k字</span>
+  </span>
+</span>
+<span class="bull">
+·</span>
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+    <span class="post-meta-item-text">阅读时长≈</span>
+    <span class="post-count">14分钟</span>
+  </span>
+</span>
+        
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 评论数显示 -->
+      <!-- <span class="post-meta-item" >
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              </span class="post-meta-item-text">
+                <span class="valine-comment-count" data-xid="/ed43"> </span>
+              </span>
+          </span> -->
+    </p>
+  </header>
+</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
@@ -558,17 +637,14 @@
         <!--套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="老前言了"><a href="#老前言了" class="headerlink" title="老前言了"></a>老前言了</h2><p>之前也看过浏览器工作原理，不过那时候知识储备还不够，看起来云里雾里，看完也没有总结，一大把的功夫就打水漂了。</p>
+          <h1 id="老前言了"><a href="#老前言了" class="headerlink" title="老前言了"></a>老前言了</h1><p>之前也看过浏览器工作原理，不过那时候知识储备还不够，看起来云里雾里，看完也没有总结，一大把的功夫就打水漂了。</p>
 <p>今天心血来潮，突然想看看浏览器工作原理，找鸭找，终于找到了我最爱的那种文章。</p>
 <p>正是<a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1#browser-architecture" target="_blank" rel="noopener">Inside look at modern web browser</a>系列。今天看完之后，觉得意犹未尽，正好想总结一下，于是就打算写这一篇记录。</p>
 <p>（<em>在看完之后，发现这系列文章在之前的掘金翻译计划中有参与，在遗憾没有第一时间发现的同时，想到能更方便自己平时的浏览，也就释然了。在这里先分享出来，不过我还没怎么看过译版，大家自己评价。</em>）</p>
 <blockquote>
-<p><a href="https://juejin.im/post/5b9b0932e51d450e9059c16a" target="_blank" rel="noopener">第一篇</a></p>
-<p><a href="https://juejin.im/post/5bc293cf6fb9a05ce95c8468" target="_blank" rel="noopener">第二篇</a></p>
-<p><a href="https://juejin.im/post/5bc29d56e51d450e9e4466cc" target="_blank" rel="noopener">第三篇</a></p>
-<p><a href="https://juejin.im/post/5bc95247e51d450e40072e49" target="_blank" rel="noopener">第四篇</a></p>
+<p><a href="https://juejin.im/post/5b9b0932e51d450e9059c16a" target="_blank" rel="noopener">第一篇</a>、<a href="https://juejin.im/post/5bc293cf6fb9a05ce95c8468" target="_blank" rel="noopener">第二篇</a>、<a href="https://juejin.im/post/5bc29d56e51d450e9e4466cc" target="_blank" rel="noopener">第三篇</a>、<a href="https://juejin.im/post/5bc95247e51d450e40072e49" target="_blank" rel="noopener">第四篇</a></p>
 </blockquote>
-<h2 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h2><p><em>说明：由于不缺翻译，我打算仅引用个人认为关键的点。</em></p>
+<h2 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h2><p><em>说明：由于不缺翻译，我打算仅记录个人认为关键的点。</em></p>
 <blockquote>
 <p>As part 1 of this series, we’ll take a look at core computing terminology and Chrome’s multi-process architecture.</p>
 </blockquote>
@@ -576,7 +652,8 @@
 <blockquote>
 <p>If two processes need to talk, they can do so by using <strong>I</strong>nter <strong>P</strong>rocess <strong>C</strong>ommunication (<strong>IPC</strong>).</p>
 </blockquote>
-<p>进程之间通过IPC技术通讯。</p>
+<p>进程之间通过<code>IPC</code>技术通讯。（文内不特意强调）</p>
+<h3 id="Chrome的多进程架构："><a href="#Chrome的多进程架构：" class="headerlink" title="Chrome的多进程架构："></a>Chrome的多进程架构：</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d59bcefbf5a45?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="浏览器架构"></p>
 <blockquote>
 <table>
 <thead>
@@ -605,7 +682,6 @@
 </tbody>
 </table>
 </blockquote>
-<h3 id="Chrome的多进程架构："><a href="#Chrome的多进程架构：" class="headerlink" title="Chrome的多进程架构："></a>Chrome的多进程架构：</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d59bcefbf5a45?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="浏览器架构"></p>
 <p>主要用到的是：浏览器进程、渲染进程、插件进程、GPU进程。</p>
 <ul>
 <li>浏览器进程：控制应用中的 “Chrome” 部分，包括地址栏，书签，回退与前进按钮。以及处理 web 浏览器不可见的特权部分，如网络请求与文件访问。</li>
@@ -619,7 +695,7 @@
 <li>安全性与封闭性（sandbox）好。浏览器通过操作系统提供的方法，限制某些进程的权限。例如，限制渲染进程对文件的访问权限。</li>
 </ol>
 <h3 id="浏览器的架构正在更新："><a href="#浏览器的架构正在更新：" class="headerlink" title="浏览器的架构正在更新："></a>浏览器的架构正在更新：</h3><p>下一个方向是通过将模块服务化，自适应设备的资源，聚合成一个或分解成多个进程。（待考究是否已经更改）</p>
-<h3 id="Chrome针对安全攻击的优化："><a href="#Chrome针对安全攻击的优化：" class="headerlink" title="Chrome针对安全攻击的优化："></a>Chrome针对安全攻击的优化：</h3><p>即不同站点的页面由不同的渲染进程展示，即使他们在同一个tab（iframe）。</p>
+<h3 id="Chrome针对安全攻击的优化："><a href="#Chrome针对安全攻击的优化：" class="headerlink" title="Chrome针对安全攻击的优化："></a>Chrome针对安全攻击的优化：</h3><p>即不同站点的页面由不同的渲染进程展示，即使他们在同一个tab（如利用<code>iframe</code>）。</p>
 <h2 id="第二篇"><a href="#第二篇" class="headerlink" title="第二篇"></a>第二篇</h2><blockquote>
 <p> In <a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1" target="_blank" rel="noopener">the previous post</a>, we looked at how different processes and threads handle different parts of a browser. In this post, we dig deeper into how each process and thread communicate in order to display a website.</p>
 </blockquote>
@@ -633,10 +709,108 @@
 <h4 id="第二步：开始导航"><a href="#第二步：开始导航" class="headerlink" title="第二步：开始导航"></a>第二步：开始导航</h4><blockquote>
 <p>When a user hits enter, the UI thread initiates a network call to get site content. </p>
 </blockquote>
-<p>用户确认输入以后，UI线程通知浏览器进程中的网络线程以获取网络资源。此时UI线程将标签页左侧设置成旋转的loader。</p>
-<p>而网络线程，就采用各种协议请求资源。（DNS、HTTP、TCP等）</p>
-<p>此时，若网络线程收到服务端发过来301的重定向状态码，则会通知UI线程更改地址栏的同时，自己开始重新请求。</p>
-<h4 id="第三步：处理响应"><a href="#第三步：处理响应" class="headerlink" title="第三步：处理响应"></a>第三步：处理响应</h4>
+<p>用户确认输入以后，UI线程通知<strong>浏览器进程中的网络线程</strong>（<em>现在好像网络线程从浏览器进程中独立出来了，不过本记录仍保留原文的描述</em>）以获取网络资源。此时UI线程将标签页左侧设置成旋转的Loading。</p>
+<p>而网络线程，就采用各种协议请求资源。（浏览器缓存的内容与方式决定了网络线程发送请求的与否）</p>
+<p>此时，若网络线程收到服务端发过来301的重定向状态码，则会通知UI线程更改地址栏的同时（仅更改地址），自己开始重新请求。</p>
+<h4 id="第三步：处理响应"><a href="#第三步：处理响应" class="headerlink" title="第三步：处理响应"></a>第三步：处理响应</h4><p>当服务器返回响应时，为了确定数据类型，浏览器进程的网络线程可能会阅读响应体中的字节流。即响应头的Content-Type字段丢失或者错误时，网络线程就会进行<a href="https://mimesniff.spec.whatwg.org/" target="_blank" rel="noopener">MIME Type sniffing</a>。</p>
+<blockquote>
+<p>The definition of how browsers should interpret media types and figure out what to do with content that doesn’t have a valid one</p>
+</blockquote>
+<p>当确定了响应的类型，例如HTML文件（输了URL肯定先要HTML），浏览器进程的网络线程会把数据送给渲染进程。</p>
+<p>（<em>脱离我们的导航场景，当响应数据为zip等其他非渲染页面要用的文件时，网络线程会将数据传给下载管理器（<code>download manager</code>）</em>）</p>
+<p>在网络线程传数据给其他模块之前，会进行一些安全检测，如<a href="https://safebrowsing.google.com/" target="_blank" rel="noopener">safeBrowsing</a>和<a href="https://www.chromium.org/Home/chromium-security/corb-for-developers" target="_blank" rel="noopener">CORB</a>。</p>
+<h4 id="第四步：准备渲染进程"><a href="#第四步：准备渲染进程" class="headerlink" title="第四步：准备渲染进程"></a>第四步：准备渲染进程</h4><p>当检查完毕，并且网络线程确定浏览器应该导航至请求的网站时，网络线程通知UI线程数据已经准备完毕，经由UI线程的手，准备渲染进程。</p>
+<p>由于网络线程是需要等待响应的（可能会数百毫秒），此处应用了一个优化。</p>
+<p>UI线程实际上会在网络线程发出请求的同时寻找或开启一个渲染进程，不出意外，当网络线程接收到响应式，渲染进程应该已经准备好了。（<em>但当响应是跨站重定向时，将不会使用准备好的进程，而是重新开启新的进程，整个过程也会慢一些。</em>）</p>
+<h4 id="第五步：提交导航"><a href="#第五步：提交导航" class="headerlink" title="第五步：提交导航"></a>第五步：提交导航</h4><p>当渲染进程和数据都准备好，浏览器进程就会向渲染进程提交本次导航，附带响应首部（当然还有数据，由网络线程和渲染进程直接建立数据通道的方式传输）。一旦浏览器进程接收到渲染进程的对此次提交的确认，导航就已经完成了，而页面加载阶段开始。</p>
+<p>此时，浏览器的地址栏会进行更新，如显示安全标志和网站信息等等。浏览历史（保存在磁盘上）也会更新以保证前进后退的使用（此时Loading并未停止）。</p>
+<h4 id="第六步：页面加载"><a href="#第六步：页面加载" class="headerlink" title="第六步：页面加载"></a>第六步：页面加载</h4><p>（<em>以上是导航的过程，接下来就是渲染进程负责的页面加载了。但页面加载也挺复杂，所以作者将页面加载放在了第四篇。</em>）</p>
+<h4 id="额外的步骤：初始化加载完成"><a href="#额外的步骤：初始化加载完成" class="headerlink" title="额外的步骤：初始化加载完成"></a>额外的步骤：初始化加载完成</h4><p>跳过页面加载，渲染进程在加载“完成”之后，会通知浏览器进程（所有<code>onLoad</code>事件已经完成），此时浏览器进程的UI线程才会停止旋转Loading。</p>
+<p>上面的“完成”打引号是因为js可能会加载额外的资源并渲染新的视图。</p>
+<h3 id="重新导航"><a href="#重新导航" class="headerlink" title="重新导航"></a>重新导航</h3><p>重新导航至其他网站，会在之前的基础上多出一个<strong>处理<code>beforeunload</code>事件</strong>的过程（JS代码，当然是运行在渲染进程）。另外，如其名，这个过程是在导航新页面之前的。</p>
+<p>（<em>导航至其他网站有两种方式，一是输入URL，二是JS和链接。两种方式导致的区别只在于浏览器进程与渲染进程中，谁是主动通信的一方。</em>）</p>
+<p><code>beforeunload</code>事件处理之后，就会启动新的渲染进程，旧的进程则处理像<code>unload</code>这样的事件。更多详细信息可参阅 <a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api#overview_of_page_lifecycle_states_and_events" target="_blank" rel="noopener">an overview of page lifecycle states</a> 和 <a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api" target="_blank" rel="noopener">the Page Lifecycle API</a>.</p>
+<h3 id="如果有Service-Worker"><a href="#如果有Service-Worker" class="headerlink" title="如果有Service Worker"></a>如果有Service Worker</h3><p>虽然我对Service Worker还不了解，但不耽误我理解浏览器对它的处理。</p>
+<p>当浏览器发现Service Worker的存在时，并且新的导航被Service Worker所关联（或者说注册），那么将会有一个渲染进程来执行Service Worker的代码，并由其决定究竟是使用缓存还是发送网络请求。</p>
+<p>（<em>由于等待Service Worker确认是否发起网络请求，所以会有延迟，Chrome对此也做了优化，即Service Worker开始的同时，标记并发起一些请求，这些请求可由服务器来决定响应的具体内容。</em>）</p>
+<blockquote>
+<p>It marks these requests with a header, allowing servers to decide to send different content for these requests; for example, just updated data instead of a full document.</p>
+</blockquote>
+<h2 id="第三篇"><a href="#第三篇" class="headerlink" title="第三篇"></a>第三篇</h2><p>第三篇主要介绍了第二篇中的第六步。</p>
+<blockquote>
+<p>The renderer process’s core job is to turn HTML, CSS, and JavaScript into a web page that the user can interact with.</p>
+</blockquote>
+<p>渲染进程的主要职责，就是将HTML，CSS，JS转化成一个用户可以交互的网页。</p>
+<h3 id="渲染进程内包含的线程"><a href="#渲染进程内包含的线程" class="headerlink" title="渲染进程内包含的线程"></a>渲染进程内包含的线程</h3><ul>
+<li>主线程：负责处理发送到客户端（User）的主要代码</li>
+<li>合成线程：处理合成任务</li>
+<li>栅格化线程：处理栅格化任务</li>
+<li>工作线程：如果启用web worker或service worker，部分js将由工作线程处理</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/10/14/1667036680e836ec?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="Renderer process"></p>
+<h3 id="页面加载，启动"><a href="#页面加载，启动" class="headerlink" title="页面加载，启动"></a>页面加载，启动</h3><h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><blockquote>
+<p>Parsing an HTML document into a DOM is defined by the <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener">HTML Standard</a>. </p>
+</blockquote>
+<p>根据HTML 标准将HTML解析成DOM。</p>
+<h4 id="子资源加载"><a href="#子资源加载" class="headerlink" title="子资源加载"></a>子资源加载</h4><p>网站中使用到的额外资源，如图片，CSS，JS等。HTML解析器在遇到这些资源时，会生成令牌（tokens），并在构建DOM的过程中由预加载扫描器（preload scanner）处理，最终通知（send requests to the network thread）浏览器进程中的网络线程以发送请求。</p>
+<h4 id="HTML中的Script"><a href="#HTML中的Script" class="headerlink" title="HTML中的Script"></a>HTML中的Script</h4><p>HTML解析是会被阻塞的。被<script>标签甚至是CSS样式。</p>
+<p>（<em>当Script标签内部访问了CSS，而该CSS是外部导入，需要下载的，那么此时就需要等待CSS下载完成后再执行js代码，所以可以说是被CSS阻塞</em>）</p>
+<h4 id="样式计算"><a href="#样式计算" class="headerlink" title="样式计算"></a>样式计算</h4><p>在主线程（别忘了几个线程的名字）解析完DOM后（不被阻塞），会开始计算样式。</p>
+<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><p>同样，由主线程根据DOM和样式来生成布局树。它是一个类似于DOM，保存着所有位置关系的树形结构。（<em>所有位置信息，所以<code>overflow: hidden</code>的节点和<strong>伪元素</strong>都会包含在内，而<code>display: none</code>的节点，因为它没有位置信息，所以不在内。</em>）</p>
+<h4 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h4><p>为了绘制界面，还需要计算一个绘制顺序——<strong>绘制记录</strong>。就像：</p>
+<blockquote>
+<p> Paint record is a note of painting process like “background first, then text, then rectangle”.</p>
+</blockquote>
+<h4 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h4><p>按理来说，知道以上所有的信息（DOM、样式、布局树、绘制记录）之后，就可以生成页面了，U1S1，确实，Chrome刚发布的时候确实是这样的，但后面做了优化，那就是合成。</p>
+<blockquote>
+<p>Compositing is a technique to separate parts of a page into layers, rasterize them separately, and composite as a page in a separate thread called compositor thread. </p>
+</blockquote>
+<p>合成呢，是将网页分成很多<strong>层</strong>（方便处理层叠和3D），让他们分开<strong>栅格化</strong>（不合成的话，生成页面栅格化就完事儿了），最后在合成线程中<strong>合成</strong>他们。</p>
+<p>（<strong>层</strong>叫起来拗口死了，后面叫他<strong>图层</strong>）</p>
+<p>说起来简单，但合成呢，也不是一次性把所有东西都合成的，毕竟那样分开还有什么意义。</p>
+<p>这里举个栗子。当滚动发生的时候，之前的<strong>图层</strong>已经<strong>栅格化</strong>了，所以只要合成一个新的<strong>图像</strong>（frame，帧，画面-&gt;图像）就行了。</p>
+<p>？？？什么乱七八糟的</p>
+<p>奥，这里的<strong>图像</strong>是并不是我们想象中的一个很大的图像，概念后面再说，反正它并不一定是一个屏幕那么大。所以说滚动了只要合成一个图像就完事儿了。（<em>动画也是这么搞</em>）</p>
+<p>那么网页分成很多<strong>图层</strong>？怎么个分法？</p>
+<p>奥，这还是主线程干的活。</p>
+<h5 id="通过布局树来生成图层树。"><a href="#通过布局树来生成图层树。" class="headerlink" title="通过布局树来生成图层树。"></a>通过<strong>布局树</strong>来生成<strong>图层树</strong>。</h5><p>那不是没我们开发者什么事儿？那到不是，还是能干点事儿的。</p>
+<blockquote>
+<p>If certain parts of a page that should be separate layer (like slide-in side menu) is not getting one, you can hint to the browser by using <code>will-change</code> attribute in CSS.</p>
+</blockquote>
+<p>如果你觉得他可以多分点，那你就通过<code>will-change</code>属性叫他分。</p>
+<p>（<em>物极必反，图层分多了，效率还不如不合成呢，想了解的戳 <a href="https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count">Stick to Compositor-Only Properties and Manage Layer Count</a></em>）</p>
+<h5 id="合成线程干活啦"><a href="#合成线程干活啦" class="headerlink" title="合成线程干活啦"></a>合成线程干活啦</h5><p><strong>图层树</strong>生成完了，<strong>绘制记录</strong>也有了，那就该<strong>栅格化线程</strong>出场了。<strong>主线程</strong>将这俩信息给<strong>合成线程</strong>，<strong>合成线程</strong>就把图层全部都给<strong>栅格化线程</strong>。</p>
+<p>？？？合成线程干了个啥，打酱油？</p>
+<p>原来图层太大啦，由合成线程操刀，把他都分成小片（divides them into tiles）。</p>
+<p>然鹅，一个图层分出的小片却可以组合成不止一个图层，因为有：</p>
+<blockquote>
+<p>multiple tilings for different resolutions to handle things like zoom-in action</p>
+</blockquote>
+<p>然后<strong>栅格化线程</strong>，将这些小片栅格化，就存进了GPU内存里。其中，在视口内或附近的小片会被优先栅格化。</p>
+<p>当小片被栅格化之后，合成线程就又跳出来了。</p>
+<blockquote>
+<p>compositor thread gathers tile information called <strong>draw quads</strong> to create a <strong>compositor frame</strong>.</p>
+</blockquote>
+<p>他会收集记录小片信息的<strong>draw quads</strong>，然后生成<strong>合成图像</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>Draw quads</th>
+<th>Contains information such as the tile’s location in memory and where in the page to draw the tile taking in consideration of the page compositing.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compositor frame</td>
+<td>A collection of draw quads that represents a frame of a page.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>合成图像</strong>生成之后，就被提交给浏览器进程，同时，合成线程又能生成其他的图像（为页面或为浏览器UI）。浏览器进程又把<strong>合成图像</strong>扔给GPU，让它显示（<em>可能是权限问题，所以要经由浏览器进程之手</em>）。</p>
+<p>像刚刚说的，出现滚动事件，合成线程合成新的图像就完事儿了。</p>
+<p>（合成说起来感觉很复杂，可是这都不是主线程干的事儿，所以不需要像主线程那样会被HTML、CSS、JS耽搁，除非要重新生成图层树。）</p>
+<h3 id="更新渲染是costly的"><a href="#更新渲染是costly的" class="headerlink" title="更新渲染是costly的"></a>更新渲染是costly的</h3><p>我们常说回流和重绘，就是由于浏览器高花销的渲染流程。（<em>这里的高花销并不是指其占用的资源很多，而是指在渲染的过程中，主线程的每个结果都是根据之前得出的结果生成的。</em>）</p>
+<h2 id="第四篇（待续）"><a href="#第四篇（待续）" class="headerlink" title="第四篇（待续）"></a>第四篇（待续）</h2></script></p>
         </div>
 
         <!-- .entry-content -->
@@ -916,7 +1090,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">11.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">13.9k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
