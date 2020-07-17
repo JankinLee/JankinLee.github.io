@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-16T12:24:38.817Z</updated>
+  <updated>2020-07-16T13:56:50.717Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>学习记录之现代浏览器内部揭秘</title>
+    <link href="/post/ed43.html"/>
+    <id>/post/ed43.html</id>
+    <published>2020-07-16T12:32:59.000Z</published>
+    <updated>2020-07-16T13:56:50.717Z</updated>
+    
+    <summary type="html">
+    
+      这还担心弄不懂？妙鸭
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Web Broswer" scheme="/tags/Web-Broswer/"/>
+    
+      <category term="Record" scheme="/tags/Record/"/>
+    
+  </entry>
+  
+  <entry>
     <title>他是谁?</title>
     <link href="/post/7161.html"/>
     <id>/post/7161.html</id>
     <published>2020-07-16T11:55:18.000Z</published>
-    <updated>2020-07-16T12:24:38.817Z</updated>
+    <updated>2020-07-17T02:22:52.183Z</updated>
     
     <summary type="html">
     
@@ -29,7 +51,7 @@
     
     </summary>
     
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
       <category term="生活" scheme="/tags/%E7%94%9F%E6%B4%BB/"/>
@@ -56,11 +78,11 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+      <category term="Record" scheme="/tags/Record/"/>
+    
       <category term="React_Lifecycle_V16.4" scheme="/tags/React-Lifecycle-V16-4/"/>
     
       <category term="React.js" scheme="/tags/React-js/"/>
-    
-      <category term="Record" scheme="/tags/Record/"/>
     
   </entry>
   

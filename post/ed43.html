@@ -6,7 +6,7 @@
   <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: 感悟 | 俗人</title>
+  <title itemprop="name">学习记录之现代浏览器内部揭秘 | 俗人</title>
   
     <link rel="shortcut icon" href="/img/custom/favicon.ico">
   
@@ -544,79 +544,310 @@
 </div>
 <button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
       <!-- body -->
-      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="感悟.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-  </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">感悟</h1>
-    <br>
-    <span class="post-meta-item-icon">
-      <i class="iconfont icon-attention"></i>
-    </span>
-    <span class="post-meta-item-text"><span id="busuanzi_value_page_pv"> </span>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-    <!-- 置顶文章 -->
-    
-      
-    
-    <!-- 首页默认取最最新文章集 -->
-    
-      <!-- 其余文章 -->
-      
-        <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/post/7161.html">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content">  -->
+        <!--套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="老前言了"><a href="#老前言了" class="headerlink" title="老前言了"></a>老前言了</h2><p>之前也看过浏览器工作原理，不过那时候知识储备还不够，看起来云里雾里，看完也没有总结，一大把的功夫就打水漂了。</p>
+<p>今天心血来潮，突然想看看浏览器工作原理，找鸭找，终于找到了我最爱的那种文章。</p>
+<p>正是<a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1#browser-architecture" target="_blank" rel="noopener">Inside look at modern web browser</a>系列。今天看完之后，觉得意犹未尽，正好想总结一下，于是就打算写这一篇记录。</p>
+<p>（<em>在看完之后，发现这系列文章在之前的掘金翻译计划中有参与，在遗憾没有第一时间发现的同时，想到能更方便自己平时的浏览，也就释然了。在这里先分享出来，不过我还没怎么看过译版，大家自己评价。</em>）</p>
+<blockquote>
+<p><a href="https://juejin.im/post/5b9b0932e51d450e9059c16a" target="_blank" rel="noopener">第一篇</a></p>
+<p><a href="https://juejin.im/post/5bc293cf6fb9a05ce95c8468" target="_blank" rel="noopener">第二篇</a></p>
+<p><a href="https://juejin.im/post/5bc29d56e51d450e9e4466cc" target="_blank" rel="noopener">第三篇</a></p>
+<p><a href="https://juejin.im/post/5bc95247e51d450e40072e49" target="_blank" rel="noopener">第四篇</a></p>
+</blockquote>
+<h2 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h2><p><em>说明：由于不缺翻译，我打算仅引用个人认为关键的点。</em></p>
+<blockquote>
+<p>As part 1 of this series, we’ll take a look at core computing terminology and Chrome’s multi-process architecture.</p>
+</blockquote>
+<p>本系列博客的第一篇，讲的是基本术语与Chrome的多进程架构。</p>
+<blockquote>
+<p>If two processes need to talk, they can do so by using <strong>I</strong>nter <strong>P</strong>rocess <strong>C</strong>ommunication (<strong>IPC</strong>).</p>
+</blockquote>
+<p>进程之间通过IPC技术通讯。</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Process and What it controls</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Browser</td>
+<td>Controls “chrome” part of the application including address bar, bookmarks, back and forward buttons. Also handles the invisible, privileged parts of a web browser such as network requests and file access.</td>
+</tr>
+<tr>
+<td style="text-align:left">Renderer</td>
+<td>Controls anything inside of the tab where a website is displayed.</td>
+</tr>
+<tr>
+<td style="text-align:left">Plugin</td>
+<td>Controls any plugins used by the website, for example, flash.</td>
+</tr>
+<tr>
+<td style="text-align:left">GPU</td>
+<td>Handles GPU tasks in isolation from other processes. It is separated into different process because GPUs handles requests from multiple apps and draw them in the same surface.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h3 id="Chrome的多进程架构："><a href="#Chrome的多进程架构：" class="headerlink" title="Chrome的多进程架构："></a>Chrome的多进程架构：</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/14/165d59bcefbf5a45?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="浏览器架构"></p>
+<p>主要用到的是：浏览器进程、渲染进程、插件进程、GPU进程。</p>
+<ul>
+<li>浏览器进程：控制应用中的 “Chrome” 部分，包括地址栏，书签，回退与前进按钮。以及处理 web 浏览器不可见的特权部分，如网络请求与文件访问。</li>
+<li>渲染进程：控制标签页内网站展示。</li>
+<li>插件进程： 控制站点使用的任意插件，如 Flash。</li>
+<li>GPU进程：处理独立于其它进程的 GPU 任务。GPU 被分成不同进程，因为 GPU 处理来自多个不同应用的请求并绘制在相同表面。</li>
+</ul>
+<p>还有些进程，但不那么关心，如扩展（Extension ）进程、工具（utility）进程。</p>
+<h3 id="简单总结一下浏览器多进程架构的优点："><a href="#简单总结一下浏览器多进程架构的优点：" class="headerlink" title="简单总结一下浏览器多进程架构的优点："></a>简单总结一下浏览器多进程架构的优点：</h3><ol>
+<li>通过开启多个渲染进程，使得标签页之间相对独立，一般不会因一个标签页崩溃而整个程序崩溃。（不一般是指内存不够时，相同站点的标签页会由同一个渲染进程负责，当然，此时开启进程的数量也会有限制。）</li>
+<li>安全性与封闭性（sandbox）好。浏览器通过操作系统提供的方法，限制某些进程的权限。例如，限制渲染进程对文件的访问权限。</li>
+</ol>
+<h3 id="浏览器的架构正在更新："><a href="#浏览器的架构正在更新：" class="headerlink" title="浏览器的架构正在更新："></a>浏览器的架构正在更新：</h3><p>下一个方向是通过将模块服务化，自适应设备的资源，聚合成一个或分解成多个进程。（待考究是否已经更改）</p>
+<h3 id="Chrome针对安全攻击的优化："><a href="#Chrome针对安全攻击的优化：" class="headerlink" title="Chrome针对安全攻击的优化："></a>Chrome针对安全攻击的优化：</h3><p>即不同站点的页面由不同的渲染进程展示，即使他们在同一个tab（iframe）。</p>
+<h2 id="第二篇"><a href="#第二篇" class="headerlink" title="第二篇"></a>第二篇</h2><blockquote>
+<p> In <a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1" target="_blank" rel="noopener">the previous post</a>, we looked at how different processes and threads handle different parts of a browser. In this post, we dig deeper into how each process and thread communicate in order to display a website.</p>
+</blockquote>
+<p>第二篇，讲浏览器是怎样通过协调进程与线程，来展示页面的。</p>
+<p><em>接下来的整体流程是真的清晰，因为它是从浏览器的角度来说的。</em></p>
+<h3 id="What-happens-in-navigation——从输入url到呈现页面"><a href="#What-happens-in-navigation——从输入url到呈现页面" class="headerlink" title="What happens in navigation——从输入url到呈现页面"></a>What happens in navigation——从输入url到呈现页面</h3><h4 id="第一步：处理输入"><a href="#第一步：处理输入" class="headerlink" title="第一步：处理输入"></a>第一步：处理输入</h4><blockquote>
+<p>When a user starts to type into the address bar, the first thing UI thread asks is “Is this a search query or URL?”.</p>
+</blockquote>
+<p>这里的UI线程是浏览器进程的一部分，负责处理标签页外的UI。</p>
+<p>用户的输入先由它这样处理，因为Chrome的地址栏同样是搜索栏。</p>
+<h4 id="第二步：开始导航"><a href="#第二步：开始导航" class="headerlink" title="第二步：开始导航"></a>第二步：开始导航</h4><blockquote>
+<p>When a user hits enter, the UI thread initiates a network call to get site content. </p>
+</blockquote>
+<p>用户确认输入以后，UI线程通知浏览器进程中的网络线程以获取网络资源。此时UI线程将标签页左侧设置成旋转的loader。</p>
+<p>而网络线程，就采用各种协议请求资源。（DNS、HTTP、TCP等）</p>
+<p>此时，若网络线程收到服务端发过来301的重定向状态码，则会通知UI线程更改地址栏的同时，自己开始重新请求。</p>
+<h4 id="第三步：处理响应"><a href="#第三步：处理响应" class="headerlink" title="第三步：处理响应"></a>第三步：处理响应</h4>
         </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.4/ACGImages/98.png"
-          class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">
-      </a>
-    </div>
-    <h1 class="entry-title">
-      <a href="/post/7161.html">
-        他是谁?</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-      2020-7-16</div>
-    <p>
-      是谁，教会你生活?</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/post/7161.html">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-       
-    
 
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.2//img/custom/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.2//img/custom/WeChatQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <!-- 评分 -->
+        <div class="single-reward">
+          
+          <!-- 五星评分 -->
+<div id="wpac-rating"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 23889});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+<!-- <a href="https://widgetpack.com" class="wpac-cr">Star Rating WIDGET PACK</a> -->
+          
+        </div>
+        <!-- 自定义署名方式 -->
+        <footer class="post-footer">
+          <div class="post-lincenses" style="color: #ff9966;">
+            欢迎转载，转载时请注明来源哦！
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" style="color: #ff9966;" target="_blank"
+              rel="nofollow">
+              <i class="fa fa-creative-commons" aria-hidden="true"></i>ncsa4.0</a>
+          </div>
+          
+          <div class="post-tags" style="color: #a39391">
+            <span><i class="fa fa-tags"></i>
+              
+              <a href="/tags/Web-Broswer/" style="color: #716e77;">Web Broswer<em>·</em></a>
+              
+              <a href="/tags/Record/" style="color: #716e77;">Record<em>·</em></a>
+              
+            </span>
+            <span>
+              <i class="iconfont icon-file"></i>
+              
+              <a href="/categories/技术/" style="color: #716e77;">技术</a>
+              
+            </span>
+          </div>
+          
+          <div class="post-share" >
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+        <div class="tag-cloud">
+          <div class="tag-cloud-title">
+          </div>
+          <div class="tag-cloud-tags">
+            <a href="/tags/ECMAScript2021/" style="font-size: 20px; color: #39bae8">ECMAScript2021</a> <a href="/tags/JavaScript/" style="font-size: 20px; color: #39bae8">JavaScript</a> <a href="/tags/React-js/" style="font-size: 10px; color: #f06966">React.js</a> <a href="/tags/React-Lifecycle-V16-4/" style="font-size: 10px; color: #f06966">React_Lifecycle_V16.4</a> <a href="/tags/Record/" style="font-size: 20px; color: #39bae8">Record</a> <a href="/tags/Web-Broswer/" style="font-size: 10px; color: #f06966">Web Broswer</a> <a href="/tags/web/" style="font-size: 10px; color: #f06966">web</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a> <a href="/tags/感悟/" style="font-size: 10px; color: #f06966">感悟</a> <a href="/tags/日常/" style="font-size: 10px; color: #f06966">日常</a> <a href="/tags/生活/" style="font-size: 10px; color: #f06966">生活</a>
+          </div>
+        </div>
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+          
+            <div class="post-nepre full next">
+              
+              <a href="/post/7161.html" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.4/ACGImages/98.png"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/JankinLee/PostsCDN@1.4/ACGImages/98.png">
+                </div>
+                <span class="label">Next Post</span>
+                <div class="info">
+                  <h3>他是谁?</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      <!-- 加密文章隐藏评论 -->
+      <section class="comment" >
+        
+    <div id="vcomments"></div>
+    <script src="https://unpkg.com/valine/dist/Valine.min.js"></script><!-- 最新版 -->
+    <style>
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich2.gif") 100% 100% no-repeat;
+    }
+    </style>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            enableQQ: true,
+            boolean: true,
+            appId: 'TEkKGph2kltzvbRY92IQdJ5d-gzGzoHsz',
+            appKey: 'pvcAUxQkuAivlq5kWOMonBA6',
+            //notify: 'false' === 'true',
+            //verify: 'true' === 'true',
+            visitor: 'false' === 'true',
+            avatar: 'monsterid',
+            pageSize: '10',
+            lang: 'en',
+            placeholder: '',
+            requiredFields: ['nick','mail'], //设置必填项
+            // 设置Bilibili表情包地址
+            emojiCDN: '//i0.hdslb.com/bfs/emote/', 
+            // 表情title和图片映射
+            emojiMaps: {
+            "tv_doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
+            "tv_亲亲": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
+            "tv_偷笑": "bb690d4107620f1c15cff29509db529a73aee261.png",
+            "tv_再见": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
+            "tv_冷漠": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
+            "tv_发怒": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
+            "tv_发财": "34db290afd2963723c6eb3c4560667db7253a21a.png",
+            "tv_可爱": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
+            "tv_吐血": "09dd16a7aa59b77baa1155d47484409624470c77.png",
+            "tv_呆": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
+            "tv_呕吐": "9f996894a39e282ccf5e66856af49483f81870f3.png",
+            "tv_困": "241ee304e44c0af029adceb294399391e4737ef2.png",
+            "tv_坏笑": "1f0b87f731a671079842116e0991c91c2c88645a.png",
+            "tv_大佬": "093c1e2c490161aca397afc45573c877cdead616.png",
+            "tv_大哭": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
+            "tv_委屈": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
+            "tv_害羞": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
+            "tv_尴尬": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
+            "tv_微笑": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
+            "tv_思考": "90cf159733e558137ed20aa04d09964436f618a1.png",
+            "tv_惊吓": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png",
+            "tv_打脸": "56ab10b624063e966bfcb76ea5dc4794d87dfd47.png",
+            "tv_抓狂": "fe31c08edad661d63762b04e17b8d5ae3c71a757.png",
+            "tv_抠鼻": "c666f55e88d471e51bbd9fab9bb308110824a6eb.png",
+            "tv_斜眼笑": "911f987aa8bc1bee12d52aafe62bc41ef4474e6c.png",
+            "tv_无奈": "ea8ed89ee9878f2fece2dda0ea8a5dbfe21b5751.png",
+            "tv_晕": "5443c22b4d07fb1907ccc610c8e6db254f2461b7.png",
+            "tv_流汗": "cead1c351ab8d79e9f369605beb90148db0fbed3.png",
+            "tv_流泪": "7e71cde7858f0cd50d74b0264aa26db612a8a167.png",
+            "tv_流鼻血": "c32d39db2737f89b904ca32700d140a9241b0767.png",
+            "tv_点赞": "f85c354995bd99e28fc76c869bfe42ba6438eff4.png",
+            "tv_生气": "26702dcafdab5e8225b43ffd23c94ac1ff932654.png",
+            "tv_生病": "8b0ec90e6b86771092a498c54f09fc94621c1900.png",
+            "tv_疑问": "0793d949b18d7be716078349c202c15ff166f314.png",
+            "tv_白眼": "c1d59f439e379ee50eef488bcb5e5378e5044ea4.png",
+            "tv_皱眉": "72ccad6679fea0d14cce648b4d818e09b8ffea2d.png",
+            "tv_目瞪口呆": "0b8cb81a68de5d5365212c99375e7ace3e7891b7.png",
+            "tv_睡着": "8b196675b53af58264f383c50ad0945048290b33.png",
+            "tv_笑哭": "1abc628f6d4f4caf9d0e7800878f4697abbc8273.png",
+            "tv_腼腆": "89712c0d4af73e67f89e35cbc518420380a7f6f4.png",
+            "tv_色": "61822c7e9aae5da76475e7892534545336b23a6f.png",
+            "tv_调侃": "4bc022533ef31544ca0d72c12c808cf4a1cce3e3.png",
+            "tv_调皮": "b9c41de8e82dd7a8515ae5e3cb63e898bf245186.png",
+            "tv_鄙视": "6e72339f346a692a495b123174b49e4e8e781303.png",
+            "tv_闭嘴": "c9e990da7f6e93975e25fd8b70e2e290aa4086ef.png",
+            "tv_难过": "87f46748d3f142ebc6586ff58860d0e2fc8263ba.png",
+            "tv_馋": "fc7e829b845c43c623c8b490ee3602b7f0e76a31.png",
+            "tv_鬼脸": "0ffbbddf8a94d124ca2f54b360bbc04feb6bbfea.png",
+            "tv_黑人问号": "45821a01f51bc867da9edbaa2e070410819a95b2.png",
+            "tv_鼓掌": "1d21793f96ef4e6f48b23e53e3b9e42da833a0f6.png"
+                // ... 更多表情
+            }
+        });
+    </script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
     <!--  -->
-    
-  </div>
+
+
+
+      </section>
+      <!-- 加密文章隐藏作者信息 -->
+      
+      <section class="author-profile" >
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="https://www.laic.club" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/JankinLee/cdn@1.2.1/img/custom/avatar.jpg" itemprop="image"
+              alt="Jankin" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="https://www.laic.club" itemprop="url" rel="author">Jankin</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>你喜欢独处，却又担心寂寞，于是你爱上一阵又一阵迎面吹来的风</p>
+      </section>
+      
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+<!--评论配置-->
+
       <!-- body.end -->
     </div>
     <!-- search -->    
