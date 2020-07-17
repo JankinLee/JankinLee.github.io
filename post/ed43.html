@@ -639,7 +639,7 @@
         <div class="entry-content">
           <h1 id="老前言了"><a href="#老前言了" class="headerlink" title="老前言了"></a>老前言了</h1><p>之前也看过浏览器工作原理，不过那时候知识储备还不够，看起来云里雾里，看完也没有总结，一大把的功夫就打水漂了。</p>
 <p>今天心血来潮，突然想看看浏览器工作原理，找鸭找，终于找到了我最爱的那种文章。</p>
-<p>正是<a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1#browser-architecture" target="_blank" rel="noopener">Inside look at modern web browser</a>系列。今天看完之后，觉得意犹未尽，正好想总结一下，于是就打算写这一篇记录。</p>
+<p>正是<a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1#browser-architecture" target="_blank" rel="noopener">Inside look at modern web browser</a>系列。看完之后，觉得意犹未尽，正好想总结一下，于是就打算写这一篇记录。（通文中其他链接一样，，，进入该链接需要“机缘”）</p>
 <p>（<em>在看完之后，发现这系列文章在之前的掘金翻译计划中有参与，在遗憾没有第一时间发现的同时，想到能更方便自己平时的浏览，也就释然了。在这里先分享出来，不过我还没怎么看过译版，大家自己评价。</em>）</p>
 <blockquote>
 <p><a href="https://juejin.im/post/5b9b0932e51d450e9059c16a" target="_blank" rel="noopener">第一篇</a>、<a href="https://juejin.im/post/5bc293cf6fb9a05ce95c8468" target="_blank" rel="noopener">第二篇</a>、<a href="https://juejin.im/post/5bc29d56e51d450e9e4466cc" target="_blank" rel="noopener">第三篇</a>、<a href="https://juejin.im/post/5bc95247e51d450e40072e49" target="_blank" rel="noopener">第四篇</a></p>
@@ -722,12 +722,12 @@
 <h4 id="第四步：准备渲染进程"><a href="#第四步：准备渲染进程" class="headerlink" title="第四步：准备渲染进程"></a>第四步：准备渲染进程</h4><p>当检查完毕，并且网络线程确定浏览器应该导航至请求的网站时，网络线程通知UI线程数据已经准备完毕，经由UI线程的手，准备渲染进程。</p>
 <p>由于网络线程是需要等待响应的（可能会数百毫秒），此处应用了一个优化。</p>
 <p>UI线程实际上会在网络线程发出请求的同时寻找或开启一个渲染进程，不出意外，当网络线程接收到响应式，渲染进程应该已经准备好了。（<em>但当响应是跨站重定向时，将不会使用准备好的进程，而是重新开启新的进程，整个过程也会慢一些。</em>）</p>
-<h4 id="第五步：提交导航"><a href="#第五步：提交导航" class="headerlink" title="第五步：提交导航"></a>第五步：提交导航</h4><p>当渲染进程和数据都准备好，浏览器进程就会向渲染进程提交本次导航，附带响应首部（当然还有数据，由网络线程和渲染进程直接建立数据通道的方式传输）。一旦浏览器进程接收到渲染进程的对此次提交的确认，导航就已经完成了，而页面加载阶段开始。</p>
+<h4 id="第五步：提交导航"><a href="#第五步：提交导航" class="headerlink" title="第五步：提交导航"></a>第五步：提交导航</h4><p>当渲染进程和数据都准备好，浏览器进程就会向渲染进程提交本次导航，附带响应首部（当然还有数据，由网络线程和渲染进程直接建立数据通道的方式传输）。一旦浏览器进程接收到渲染进程对此次提交的确认，导航就已经完成了，而页面加载阶段开始。</p>
 <p>此时，浏览器的地址栏会进行更新，如显示安全标志和网站信息等等。浏览历史（保存在磁盘上）也会更新以保证前进后退的使用（此时Loading并未停止）。</p>
-<h4 id="第六步：页面加载"><a href="#第六步：页面加载" class="headerlink" title="第六步：页面加载"></a>第六步：页面加载</h4><p>（<em>以上是导航的过程，接下来就是渲染进程负责的页面加载了。但页面加载也挺复杂，所以作者将页面加载放在了第四篇。</em>）</p>
-<h4 id="额外的步骤：初始化加载完成"><a href="#额外的步骤：初始化加载完成" class="headerlink" title="额外的步骤：初始化加载完成"></a>额外的步骤：初始化加载完成</h4><p>跳过页面加载，渲染进程在加载“完成”之后，会通知浏览器进程（所有<code>onLoad</code>事件已经完成），此时浏览器进程的UI线程才会停止旋转Loading。</p>
-<p>上面的“完成”打引号是因为js可能会加载额外的资源并渲染新的视图。</p>
-<h3 id="重新导航"><a href="#重新导航" class="headerlink" title="重新导航"></a>重新导航</h3><p>重新导航至其他网站，会在之前的基础上多出一个<strong>处理<code>beforeunload</code>事件</strong>的过程（JS代码，当然是运行在渲染进程）。另外，如其名，这个过程是在导航新页面之前的。</p>
+<h4 id="第六步：页面加载"><a href="#第六步：页面加载" class="headerlink" title="第六步：页面加载"></a>第六步：页面加载</h4><p>（<em>以上是导航的过程，接下来就是渲染进程负责的页面加载了。但页面加载也挺复杂，所以作者将页面加载放在了第三篇。</em>）</p>
+<h4 id="额外的步骤：初始化加载完成"><a href="#额外的步骤：初始化加载完成" class="headerlink" title="额外的步骤：初始化加载完成"></a>额外的步骤：初始化加载完成</h4><p>跳过页面加载，渲染进程在加载“完成”之后，会通知浏览器进程（所有<code>onLoad</code>事件已经完成时），此时浏览器进程的UI线程才会停止旋转Loading。</p>
+<p>上面的“完成”打引号是因为JS可能会加载额外的资源并导致渲染新的视图。</p>
+<h3 id="重新导航"><a href="#重新导航" class="headerlink" title="重新导航"></a>重新导航</h3><p>以上是第一次输入URL的导航过程。重新导航至其他网站，会在之前的基础上多出一个<strong>处理<code>beforeunload</code>事件</strong>的过程（JS代码，当然是运行在渲染进程）。另外，如其名，这个过程是在导航新页面之前的。</p>
 <p>（<em>导航至其他网站有两种方式，一是输入URL，二是JS和链接。两种方式导致的区别只在于浏览器进程与渲染进程中，谁是主动通信的一方。</em>）</p>
 <p><code>beforeunload</code>事件处理之后，就会启动新的渲染进程，旧的进程则处理像<code>unload</code>这样的事件。更多详细信息可参阅 <a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api#overview_of_page_lifecycle_states_and_events" target="_blank" rel="noopener">an overview of page lifecycle states</a> 和 <a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api" target="_blank" rel="noopener">the Page Lifecycle API</a>.</p>
 <h3 id="如果有Service-Worker"><a href="#如果有Service-Worker" class="headerlink" title="如果有Service Worker"></a>如果有Service Worker</h3><p>虽然我对Service Worker还不了解，但不耽误我理解浏览器对它的处理。</p>
@@ -753,8 +753,8 @@
 </blockquote>
 <p>根据HTML 标准将HTML解析成DOM。</p>
 <h4 id="子资源加载"><a href="#子资源加载" class="headerlink" title="子资源加载"></a>子资源加载</h4><p>网站中使用到的额外资源，如图片，CSS，JS等。HTML解析器在遇到这些资源时，会生成令牌（tokens），并在构建DOM的过程中由预加载扫描器（preload scanner）处理，最终通知（send requests to the network thread）浏览器进程中的网络线程以发送请求。</p>
-<h4 id="HTML中的Script"><a href="#HTML中的Script" class="headerlink" title="HTML中的Script"></a>HTML中的Script</h4><p>HTML解析是会被阻塞的。被<script>标签甚至是CSS样式。</p>
-<p>（<em>当Script标签内部访问了CSS，而该CSS是外部导入，需要下载的，那么此时就需要等待CSS下载完成后再执行js代码，所以可以说是被CSS阻塞</em>）</p>
+<h4 id="HTML中的Script"><a href="#HTML中的Script" class="headerlink" title="HTML中的Script"></a>HTML中的Script</h4><p>HTML解析是会被阻塞的。被<code>script</code>标签甚至是CSS样式。</p>
+<p>（<em>当Script标签内部访问了CSS，而该CSS是外部导入，需要下载的，那么此时就需要等待CSS下载完成后再执行JS代码，所以可以说是被CSS阻塞</em>）</p>
 <h4 id="样式计算"><a href="#样式计算" class="headerlink" title="样式计算"></a>样式计算</h4><p>在主线程（别忘了几个线程的名字）解析完DOM后（不被阻塞），会开始计算样式。</p>
 <h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><p>同样，由主线程根据DOM和样式来生成布局树。它是一个类似于DOM，保存着所有位置关系的树形结构。（<em>所有位置信息，所以<code>overflow: hidden</code>的节点和<strong>伪元素</strong>都会包含在内，而<code>display: none</code>的节点，因为它没有位置信息，所以不在内。</em>）</p>
 <h4 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h4><p>为了绘制界面，还需要计算一个绘制顺序——<strong>绘制记录</strong>。就像：</p>
@@ -778,7 +778,7 @@
 <p>If certain parts of a page that should be separate layer (like slide-in side menu) is not getting one, you can hint to the browser by using <code>will-change</code> attribute in CSS.</p>
 </blockquote>
 <p>如果你觉得他可以多分点，那你就通过<code>will-change</code>属性叫他分。</p>
-<p>（<em>物极必反，图层分多了，效率还不如不合成呢，想了解的戳 <a href="https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count">Stick to Compositor-Only Properties and Manage Layer Count</a></em>）</p>
+<p>（<em>物极必反，图层分多了，效率还不如不合成呢，想了解的戳 <a href="https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count" target="_blank" rel="noopener">Stick to Compositor-Only Properties and Manage Layer Count</a></em>）</p>
 <h5 id="合成线程干活啦"><a href="#合成线程干活啦" class="headerlink" title="合成线程干活啦"></a>合成线程干活啦</h5><p><strong>图层树</strong>生成完了，<strong>绘制记录</strong>也有了，那就该<strong>栅格化线程</strong>出场了。<strong>主线程</strong>将这俩信息给<strong>合成线程</strong>，<strong>合成线程</strong>就把图层全部都给<strong>栅格化线程</strong>。</p>
 <p>？？？合成线程干了个啥，打酱油？</p>
 <p>原来图层太大啦，由合成线程操刀，把他都分成小片（divides them into tiles）。</p>
@@ -810,7 +810,7 @@
 <p>像刚刚说的，出现滚动事件，合成线程合成新的图像就完事儿了。</p>
 <p>（合成说起来感觉很复杂，可是这都不是主线程干的事儿，所以不需要像主线程那样会被HTML、CSS、JS耽搁，除非要重新生成图层树。）</p>
 <h3 id="更新渲染是costly的"><a href="#更新渲染是costly的" class="headerlink" title="更新渲染是costly的"></a>更新渲染是costly的</h3><p>我们常说回流和重绘，就是由于浏览器高花销的渲染流程。（<em>这里的高花销并不是指其占用的资源很多，而是指在渲染的过程中，主线程的每个结果都是根据之前得出的结果生成的。</em>）</p>
-<h2 id="第四篇（待续）"><a href="#第四篇（待续）" class="headerlink" title="第四篇（待续）"></a>第四篇（待续）</h2></script></p>
+<h2 id="第四篇（待续）"><a href="#第四篇（待续）" class="headerlink" title="第四篇（待续）"></a>第四篇（待续）</h2>
         </div>
 
         <!-- .entry-content -->
