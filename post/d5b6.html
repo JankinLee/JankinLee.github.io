@@ -637,7 +637,7 @@
         <!--套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    既然<strong>执行上下文</strong>，<strong>环境记录</strong>，<strong>作用域</strong>，<strong>作用域链</strong>，<strong>词法环境</strong>，<strong>变量环境</strong>，<strong>闭包</strong>等是JS的重要概念，那么它们对于我们来说，是不陌生的。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    既然<strong>执行上下文</strong>，<strong>环境记录</strong>，<strong>作用域</strong>，<strong>作用域链</strong>，<strong>词法环境</strong>，<strong>变量环境</strong>，<strong>闭包</strong>等是JS的重要概念，那么它们对于我们来说，是不陌生的。</p>
 <p>​    然而大多数人在学习前端的过程中，很少也很难从<strong>语言规范</strong>入手，所以这些概念是属于早接触，晚理解的那一类。</p>
 <p>​    然而，整个学习过程中，本人虽然也尝试深入理解了这些概念，但并没有达到理想的效果<em>（总有人在概念后面打括号，将一些概念划等号，不告诉我们为什么没问题，问题是不同的人划的等号还不同？！(╯‵□′)╯︵┻━┻）</em>，为此，我决定根据ECMAScript2021，来进一步地理解它们。</p>
 <h2 id="规范类型（Specification-Types）"><a href="#规范类型（Specification-Types）" class="headerlink" title="规范类型（Specification Types）"></a>规范类型（Specification Types）</h2><p>在讲以上的重要概念之前，我们需要先了解这么一个概念——规范类型。</p>
@@ -793,7 +793,7 @@
 <p>而且，由于this的绑定是在创建执行上下文时进行的，因此导致了另一个问题——<strong>在对象方法中嵌套使用函数，其内部this的指向会违背使用直觉</strong>。</p>
 <p>（对于this具体的绑定过程，只是我的推断，但并未验证，望大佬指点。）每当创建函数时，就会创建新的执行上下文，进行this的绑定，当其顺着作用域链查找上临近的一个外层执行上下文时，发现自己是在对象当中创建的，则将this绑定为这个对象；若临近的外层执行上下文中没发现对象，则将this绑定为window或undefined</p>
 <p>因此在对象的方法中，若继续嵌套函数，因为创建新的执行上下文时，临近的执行上下文内并没有对象，所以其内部的this将不再指向对象，发生了重新绑定，变为了window（非严格模式）或undefined。</p>
-<h2 id="阿这，好累啊。。。感谢观看"><a href="#阿这，好累啊。。。感谢观看" class="headerlink" title="阿这，好累啊。。。感谢观看"></a>阿这，好累啊。。。感谢观看</h2>
+<h1 id="阿这，好累啊。。。感谢观看"><a href="#阿这，好累啊。。。感谢观看" class="headerlink" title="阿这，好累啊。。。感谢观看"></a>阿这，好累啊。。。感谢观看</h1>
         </div>
 
         <!-- .entry-content -->
