@@ -32,9 +32,9 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Record" scheme="/tags/Record/"/>
-    
       <category term="Web Broswer" scheme="/tags/Web-Broswer/"/>
+    
+      <category term="Record" scheme="/tags/Record/"/>
     
   </entry>
   
@@ -78,11 +78,11 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+      <category term="Record" scheme="/tags/Record/"/>
+    
       <category term="React_Lifecycle_V16.4" scheme="/tags/React-Lifecycle-V16-4/"/>
     
       <category term="React.js" scheme="/tags/React-js/"/>
-    
-      <category term="Record" scheme="/tags/Record/"/>
     
   </entry>
   
