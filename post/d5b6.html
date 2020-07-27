@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">4.9k字</span>
+    <span class="post-count">5k字</span>
   </span>
 </span>
 <span class="bull">
@@ -785,7 +785,9 @@
 <p>在JavaScript中的<strong>所有数据都是引用类型</strong>的，只是通过创建新的实例的方式，来保证数字、字符串等数据类型的不可变性。（例如，新建一个基本数据类型，你会发现它也能调用方法）</p>
 <p><strong>对于引用类型的数据，按值传递可以说是自然地选择。</strong>函数对形参的改变，会实际反映到实参上（<em>搞清楚形参与实参哟</em>），这一点与值类型的按引用传递相同；但函数内无法更换实参的引用，对形参重新赋值，仅仅是更换了形参的引用，对实参没有影响，这一点却和值类型的按值传递相同。</p>
 <h3 id="静态作用域与动态作用域"><a href="#静态作用域与动态作用域" class="headerlink" title="静态作用域与动态作用域"></a>静态作用域与动态作用域</h3><p>。。。桥豆麻袋，待我翻下书再补。</p>
-<h3 id="差点忘了this"><a href="#差点忘了this" class="headerlink" title="差点忘了this"></a>差点忘了this</h3><p>由于JavaScript自己的执行上下文，闭包等，并不能做到一个需求——<strong>在对象内部的方法中，人为地指定使用对象内部的某个属性</strong>。所以，有了this机制，并且this指向无法更改。</p>
+<h3 id="全局执行上下文"><a href="#全局执行上下文" class="headerlink" title="全局执行上下文"></a>全局执行上下文</h3><p>刚刚了解这个概念，大体上是：</p>
+<p>执行上下文栈为空时，创建的第一个执行上下文，根据全局环境记录（Global Environment Record）创建，在一般的执行上下文基础上，增添了基础的全局变量等。（有待考证，先记录一下）</p>
+<h3 id="差点忘了this"><a href="#差点忘了this" class="headerlink" title="差点忘了this"></a>差点忘了this</h3><h3 id="差点忘了this-1"><a href="#差点忘了this-1" class="headerlink" title="差点忘了this"></a>差点忘了this</h3><p>由于JavaScript自己的执行上下文，闭包等，并不能做到一个需求——<strong>在对象内部的方法中，人为地指定使用对象内部的某个属性</strong>。所以，有了this机制，并且this指向无法更改。</p>
 <p>这样想来，我们大可不必将this与其他奇怪的概念扯到一起，联系一下执行上下文就行了。</p>
 <p>所以，<strong>一般情况下，this 的作用就是在对象的方法中，指向对象本身，方便开发者使用对象的属性</strong>。</p>
 <p>然鹅，为什么要说一般呢（<em>可达鸭眉头一皱，发现事情并不简单(｡•ˇ‸ˇ•｡)</em>）。</p>
@@ -865,7 +867,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <div class="tag-cloud-title">
           </div>
           <div class="tag-cloud-tags">
-            <a href="/tags/ECMAScript2021/" style="font-size: 20px; color: #39bae8">ECMAScript2021</a> <a href="/tags/JavaScript/" style="font-size: 20px; color: #39bae8">JavaScript</a> <a href="/tags/React-js/" style="font-size: 10px; color: #f06966">React.js</a> <a href="/tags/React-Lifecycle-V16-4/" style="font-size: 10px; color: #f06966">React_Lifecycle_V16.4</a> <a href="/tags/Record/" style="font-size: 20px; color: #39bae8">Record</a> <a href="/tags/Web-Broswer/" style="font-size: 10px; color: #f06966">Web Broswer</a> <a href="/tags/web/" style="font-size: 10px; color: #f06966">web</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a> <a href="/tags/感悟/" style="font-size: 10px; color: #f06966">感悟</a> <a href="/tags/日常/" style="font-size: 10px; color: #f06966">日常</a> <a href="/tags/生活/" style="font-size: 10px; color: #f06966">生活</a>
+            <a href="/tags/ECMAScript2021/" style="font-size: 20px; color: #39bae8">ECMAScript2021</a> <a href="/tags/EventLoop/" style="font-size: 10px; color: #f06966">EventLoop</a> <a href="/tags/JavaScript/" style="font-size: 20px; color: #39bae8">JavaScript</a> <a href="/tags/React-js/" style="font-size: 10px; color: #f06966">React.js</a> <a href="/tags/React-Lifecycle-V16-4/" style="font-size: 10px; color: #f06966">React_Lifecycle_V16.4</a> <a href="/tags/Record/" style="font-size: 20px; color: #39bae8">Record</a> <a href="/tags/Web-Broswer/" style="font-size: 20px; color: #39bae8">Web Broswer</a> <a href="/tags/web/" style="font-size: 10px; color: #f06966">web</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a> <a href="/tags/感悟/" style="font-size: 10px; color: #f06966">感悟</a> <a href="/tags/日常/" style="font-size: 10px; color: #f06966">日常</a> <a href="/tags/生活/" style="font-size: 10px; color: #f06966">生活</a>
           </div>
         </div>
       </article>
@@ -1091,7 +1093,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">14k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">16.2k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>

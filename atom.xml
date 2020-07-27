@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-17T09:37:39.113Z</updated>
+  <updated>2020-07-27T10:25:29.281Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浏览器事件循环知识梳理</title>
+    <link href="/post/e8f9.html"/>
+    <id>/post/e8f9.html</id>
+    <published>2020-07-27T01:24:14.000Z</published>
+    <updated>2020-07-27T10:25:29.281Z</updated>
+    
+    <summary type="html">
+    
+      对于事件循环，详细梳理
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Web Broswer" scheme="/tags/Web-Broswer/"/>
+    
+      <category term="EventLoop" scheme="/tags/EventLoop/"/>
+    
+  </entry>
   
   <entry>
     <title>学习记录之现代浏览器内部揭秘</title>
@@ -78,11 +100,11 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Record" scheme="/tags/Record/"/>
-    
       <category term="React_Lifecycle_V16.4" scheme="/tags/React-Lifecycle-V16-4/"/>
     
       <category term="React.js" scheme="/tags/React-js/"/>
+    
+      <category term="Record" scheme="/tags/Record/"/>
     
   </entry>
   
@@ -91,7 +113,7 @@
     <link href="/post/d5b6.html"/>
     <id>/post/d5b6.html</id>
     <published>2020-06-29T16:08:31.000Z</published>
-    <updated>2020-07-17T10:28:08.195Z</updated>
+    <updated>2020-07-27T09:14:51.675Z</updated>
     
     <summary type="html">
     
