@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">3.8k字</span>
+    <span class="post-count">3.9k字</span>
   </span>
 </span>
 <span class="bull">
@@ -640,7 +640,7 @@
           <h1 id="老前言了"><a href="#老前言了" class="headerlink" title="老前言了"></a>老前言了</h1><p>之前也看过浏览器工作原理，不过那时候知识储备还不够，看起来云里雾里，看完也没有总结，一大把的功夫就打水漂了。</p>
 <p>今天心血来潮，突然想看看浏览器工作原理，找鸭找，终于找到了我最爱的那种文章。</p>
 <p>正是<a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1#browser-architecture" target="_blank" rel="noopener">Inside look at modern web browser</a>系列。看完之后，觉得意犹未尽，正好想总结一下，于是就打算写这一篇记录。（通文中其他链接一样，，，进入该链接需要“机缘”）</p>
-<p>（<em>在看完之后，发现这系列文章在之前的掘金翻译计划中有参与，在遗憾没有第一时间发现的同时，想到能更方便自己平时的浏览，也就释然了。在这里先分享出来，不过我还没怎么看过译版，大家自己评价。</em>）</p>
+<p>（<em>在看完三篇之后，发现这系列文章在之前的掘金翻译计划中有参与，在遗憾没有第一时间发现的同时，想到能更方便自己平时的浏览，也就释然了。在这里先分享出来，不过我还没怎么看过译版，大家自己评价。</em>）</p>
 <blockquote>
 <p><a href="https://juejin.im/post/5b9b0932e51d450e9059c16a" target="_blank" rel="noopener">第一篇</a>、<a href="https://juejin.im/post/5bc293cf6fb9a05ce95c8468" target="_blank" rel="noopener">第二篇</a>、<a href="https://juejin.im/post/5bc29d56e51d450e9e4466cc" target="_blank" rel="noopener">第三篇</a>、<a href="https://juejin.im/post/5bc95247e51d450e40072e49" target="_blank" rel="noopener">第四篇</a></p>
 </blockquote>
@@ -786,7 +786,7 @@
 <blockquote>
 <p>multiple tilings for different resolutions to handle things like zoom-in action</p>
 </blockquote>
-<p>然后<strong>栅格化线程</strong>，将这些小片栅格化，就存进了GPU内存里。其中，在视口内或附近的小片会被优先栅格化。</p>
+<p>然后<strong>栅格化线程</strong>（<em>与GPU进程通信，多个栅格化线程组成<strong>栅格化线程池</strong>，其意义就是<strong>防止GPU进程的栅格化任务阻塞</strong></em>），<strong>GPU进程</strong>将这些小片栅格化，就存进了GPU内存里。其中，在视口内或附近的小片会被优先栅格化。</p>
 <p>当小片被栅格化之后，合成线程就又跳出来了。</p>
 <blockquote>
 <p>compositor thread gathers tile information called <strong>draw quads</strong> to create a <strong>compositor frame</strong>.</p>
@@ -796,11 +796,15 @@
 <table>
 <thead>
 <tr>
-<th>Draw quads</th>
-<th>Contains information such as the tile’s location in memory and where in the page to draw the tile taking in consideration of the page compositing.</th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Draw quads</td>
+<td>Contains information such as the tile’s location in memory and where in the page to draw the tile taking in consideration of the page compositing.</td>
+</tr>
 <tr>
 <td>Compositor frame</td>
 <td>A collection of draw quads that represents a frame of a page.</td>
@@ -812,7 +816,7 @@
 <p>像刚刚说的，出现滚动事件，合成线程合成新的图像就完事儿了。</p>
 <p>（合成说起来感觉很复杂，可是这都不是主线程干的事儿，所以不需要像主线程那样会被HTML、CSS、JS耽搁，除非要重新生成图层树。）</p>
 <h3 id="更新渲染是costly的"><a href="#更新渲染是costly的" class="headerlink" title="更新渲染是costly的"></a>更新渲染是costly的</h3><p>我们常说回流和重绘，就是由于浏览器高花销的渲染流程。（<em>这里的高花销并不是指其占用的资源很多，而是指在渲染的过程中，主线程的每个结果都是根据之前得出的结果生成的。</em>）</p>
-<h2 id="第四篇（待续）"><a href="#第四篇（待续）" class="headerlink" title="第四篇（待续）"></a>第四篇（待续）</h2>
+<h2 id="第四篇（待续，还是想看看原文）"><a href="#第四篇（待续，还是想看看原文）" class="headerlink" title="第四篇（待续，还是想看看原文）"></a>第四篇（待续，还是想看看原文）</h2>
         </div>
 
         <!-- .entry-content -->
