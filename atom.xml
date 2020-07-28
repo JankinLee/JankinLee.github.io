@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-28T03:13:58.087Z</updated>
+  <updated>2020-07-28T10:12:14.436Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端优化体系梳理</title>
+    <link href="/post/cde3.html"/>
+    <id>/post/cde3.html</id>
+    <published>2020-07-28T05:22:12.000Z</published>
+    <updated>2020-07-28T10:12:14.436Z</updated>
+    
+    <summary type="html">
+    
+      梳理前端优化知识体系
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="性能优化" scheme="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>浏览器事件循环知识梳理</title>
