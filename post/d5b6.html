@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">5k字</span>
+    <span class="post-count">5.1k字</span>
   </span>
 </span>
 <span class="bull">
@@ -607,7 +607,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">17分钟</span>
+    <span class="post-count">18分钟</span>
   </span>
 </span>
         
@@ -784,7 +784,24 @@
 <p>对于JavaScript的参数传递方式，普遍存在两种声音。但实际上，<strong>JavaScript采用的是按值传递的方式</strong>。</p>
 <p>在JavaScript中的<strong>所有数据都是引用类型</strong>的，只是通过创建新的实例的方式，来保证数字、字符串等数据类型的不可变性。（例如，新建一个基本数据类型，你会发现它也能调用方法）</p>
 <p><strong>对于引用类型的数据，按值传递可以说是自然地选择。</strong>函数对形参的改变，会实际反映到实参上（<em>搞清楚形参与实参哟</em>），这一点与值类型的按引用传递相同；但函数内无法更换实参的引用，对形参重新赋值，仅仅是更换了形参的引用，对实参没有影响，这一点却和值类型的按值传递相同。</p>
-<h3 id="静态作用域与动态作用域"><a href="#静态作用域与动态作用域" class="headerlink" title="静态作用域与动态作用域"></a>静态作用域与动态作用域</h3><p>。。。桥豆麻袋，待我翻下书再补。</p>
+<h3 id="静态作用域与动态作用域"><a href="#静态作用域与动态作用域" class="headerlink" title="静态作用域与动态作用域"></a>静态作用域与动态作用域</h3><p>。。。静态作用域与动态作用域的区别：它们开头第一个字不一样。</p>
+<p>开个玩笑，其实实质上也很简单。</p>
+<p>静态作用域，指的是任何一个标识符，在访问其值时，访问的都是其被定义时所在作用域的值。</p>
+<p>举个简单的例子：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//0</span>
+</code></pre>
+<p>这就是静态作用域，与之相反，动态作用域，在访问任何一个标识符时，都是其在访问/调用的位置的值。</p>
 <h3 id="全局执行上下文"><a href="#全局执行上下文" class="headerlink" title="全局执行上下文"></a>全局执行上下文</h3><p>刚刚了解这个概念，大体上是：</p>
 <p>执行上下文栈为空时，创建的第一个执行上下文，根据全局环境记录（Global Environment Record）创建，在一般的执行上下文基础上，增添了基础的全局变量等。（有待考证，先记录一下）</p>
 <h3 id="差点忘了this"><a href="#差点忘了this" class="headerlink" title="差点忘了this"></a>差点忘了this</h3><p>由于JavaScript自己的执行上下文，闭包等，并不能做到一个需求——<strong>在对象内部的方法中，人为地指定使用对象内部的某个属性</strong>。所以，有了this机制，并且this指向无法更改。</p>
@@ -1093,7 +1110,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">18.2k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">18.3k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
