@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-28T10:12:14.436Z</updated>
+  <updated>2020-07-28T10:13:04.823Z</updated>
   <id>/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="/post/cde3.html"/>
     <id>/post/cde3.html</id>
     <published>2020-07-28T05:22:12.000Z</published>
-    <updated>2020-07-28T10:12:14.436Z</updated>
+    <updated>2020-07-28T10:13:04.823Z</updated>
     
     <summary type="html">
     
@@ -122,11 +122,11 @@
       <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+      <category term="Record" scheme="/tags/Record/"/>
+    
       <category term="React_Lifecycle_V16.4" scheme="/tags/React-Lifecycle-V16-4/"/>
     
       <category term="React.js" scheme="/tags/React-js/"/>
-    
-      <category term="Record" scheme="/tags/Record/"/>
     
   </entry>
   
