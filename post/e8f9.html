@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">2.1k字</span>
+    <span class="post-count">2.5k字</span>
   </span>
 </span>
 <span class="bull">
@@ -607,7 +607,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">7分钟</span>
+    <span class="post-count">8分钟</span>
   </span>
 </span>
         
@@ -715,7 +715,16 @@
 <li>在一个宏任务中，分别创建一个用于回调的宏任务和微任务，无论什么情况下，微任务都早于宏任务执行。</li>
 </ul>
 </blockquote>
-<h2 id="微任务应用之一——Promise（待续）"><a href="#微任务应用之一——Promise（待续）" class="headerlink" title="微任务应用之一——Promise（待续）"></a>微任务应用之一——Promise（待续）</h2>
+<h2 id="微任务应用之一——Promise"><a href="#微任务应用之一——Promise" class="headerlink" title="微任务应用之一——Promise"></a>微任务应用之一——Promise</h2><p>不会吧不会吧，不会还有人不知道Promise罢，啊，是我自己啊，那没事了。</p>
+<p>其实Promise这东西，大部分人应该都是在接触ES6的时候接触的。</p>
+<p>我们了解它解决的问题，了解它的各种内置玩法，了解它的实现原理，了解它的适用场景。。。</p>
+<p>这里我们从事件循环的角度来进一步理解Promise。</p>
+<p>Promise，用来执行异步任务，免得堵塞我们的代码，然而对于一些异步任务，我们是希望它们能尽快执行的（拿到了返回数据就执行，如果不用微任务，那可能拿到数据很久之后，才轮到setTimeout的宏任务执行），便应用了微任务。</p>
+<p>从微任务的角度来看，Promise利用了微任务的特性，表现出对回调函数的延迟绑定。</p>
+<p>通过将异步任务设置成微任务，将所有需要等待结果才能执行的逻辑都放在微任务中执行。在同步代码中，看起来像是先触发回调函数，再绑定回调函数的样子。</p>
+<p>再结合返回值穿透，错误冒泡等特性，Promise以同步的方式来编写异步任务，解决了异步逻辑不连续、回调地狱等问题。</p>
+<p>（<em>另外，Promise搭配上协程，又能发挥出更大的作用，异步任务就一点也不像异步任务了。一旦微任务执行完毕，主线程的控制权在我们创建的协程中反复横跳。</em>）</p>
+<h1 id="感谢观看"><a href="#感谢观看" class="headerlink" title="感谢观看"></a>感谢观看</h1>
         </div>
 
         <!-- .entry-content -->
@@ -1012,7 +1021,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">18.9k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">19.3k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
