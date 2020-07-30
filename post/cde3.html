@@ -598,7 +598,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">1.9k字</span>
+    <span class="post-count">2.6k字</span>
   </span>
 </span>
 <span class="bull">
@@ -607,7 +607,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">7分钟</span>
+    <span class="post-count">9分钟</span>
   </span>
 </span>
         
@@ -660,12 +660,12 @@
 </blockquote>
 <p>简单提炼一下：</p>
 <ul>
-<li>FCP：记录页面从开始加载到<strong>第一个像素被绘制</strong>的时间</li>
-<li>LCP：记录页面从开始加载到<strong>最大的文本块或图片被渲染</strong>的时间（推导成首屏内容怎么样？）</li>
-<li>FID：记录页面与用户进行<strong>第一个交互</strong>开始，<strong>到</strong>浏览器实际<strong>响应交互</strong>的时间</li>
-<li>TTI：记录页面<strong>从开始加载到所有交互已准备完成</strong>。</li>
-<li>TBT：记录<strong>FCP到TTI</strong>的时间（即浏览器渲染进程 主线程 被阻塞而无法响应用户输入的时间）</li>
-<li>CLS：从页面开始加载到<a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api" target="_blank" rel="noopener">页面生命周期</a>变为Hidden，通过相加<strong>计算得到的每个独立布局变化的得分</strong>得到的<strong>总分</strong>（CLS计算方式详见<a href="https://web.dev/cls/#layout-shift-score" target="_blank" rel="noopener">此链接</a>，页面生命周期详见<a href="https://github.com/WICG/page-lifecycle" target="_blank" rel="noopener">此链接</a>）</li>
+<li>FCP：<strong>首次内容绘制</strong>，记录页面从开始加载到<strong>第一个像素被绘制</strong>的时间</li>
+<li>LCP：<strong>最大内容绘制</strong>，记录页面从开始加载到<strong>最大的文本块或图片被渲染</strong>的时间（视口内的？）</li>
+<li>FID：<strong>首次交互延迟</strong>，记录页面与用户进行<strong>第一个交互</strong>开始，<strong>到</strong>浏览器实际<strong>响应交互</strong>的时间</li>
+<li>TTI：<strong>交互准备就绪</strong>，记录页面<strong>从开始加载到所有交互已准备完成</strong>。</li>
+<li>TBT：<strong>总阻塞时间</strong>，记录<strong>FCP到TTI</strong>的时间（即浏览器渲染进程 主线程 被阻塞而无法响应用户输入的时间）</li>
+<li>CLS：<strong>累积布局转换</strong>，从页面开始加载到<a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api" target="_blank" rel="noopener">页面生命周期</a>变为Hidden，通过相加<strong>计算得到的每个独立布局变化的得分</strong>得到的<strong>总分</strong>（CLS计算方式详见<a href="https://web.dev/cls/#layout-shift-score" target="_blank" rel="noopener">此链接</a>，页面生命周期详见<a href="https://github.com/WICG/page-lifecycle" target="_blank" rel="noopener">此链接</a>）</li>
 </ul>
 <p>我们将这些度量标准做一下分类——根据浏览器渲染页面的过程（<em>生命周期更偏向于交互，而我们需要的不仅仅是交互</em>）。</p>
 <p>从<a href="https://www.laic.club/post/ed43.html" target="_blank" rel="noopener">浏览器内部揭秘</a>了解到，浏览器渲染页面的过程大致可以分为三个阶段：导航阶段、渲染阶段、交互阶段。</p>
@@ -677,13 +677,16 @@
 <p>但我感觉还不够，因为每个指标涉及的优化其实并不单一，需要我们结合浏览器工作原理，计算机网络等知识。为此，再上摁（硬）菜之前，我还梳理一下优化手段的分类。</p>
 <h3 id="性能优化（持续更新）"><a href="#性能优化（持续更新）" class="headerlink" title="性能优化（持续更新）"></a>性能优化（持续更新）</h3><p>性能优化的手段，无非是从以下几个方面入手的。</p>
 <ol>
-<li>前后台数据交互的优化<ul>
-<li>减少网络请求（HTTP1.1可以并行发送请求，所以可以更多的考虑减小请求体积，但显然HTTP2.0更好）<ul>
+<li><p>前后台数据交互的优化</p>
+<ul>
+<li><p>减少网络请求（HTTP/1.1可以并行发送请求，可以更多的考虑减小请求体积）</p>
+<ul>
 <li>减少首次渲染请求<ul>
 <li>使用字体图标库取代小切图</li>
 <li>合并文件</li>
 <li>合理使用内联JavaScript和内联CSS（如首屏需要用到的JS）</li>
-<li>取消加载首次构建非必须CSS（<code>&lt;link href=&quot;unnecessary.css&quot; rel=&quot;stylesheet&quot; media=&quot;none&quot; onload=&quot;this.media=&#39;all&#39;&quot;&gt;</code>）</li>
+<li>延迟首屏不需要的JavaScript文件</li>
+<li>取消加载首屏构建非必须CSS（<code>&lt;link href=&quot;unnecessary.css&quot; rel=&quot;stylesheet&quot; media=&quot;none&quot; onload=&quot;this.media=&#39;all&#39;&quot;&gt;</code>）</li>
 <li>使用Service Worker决定是否发送请求</li>
 </ul>
 </li>
@@ -695,25 +698,34 @@
 </li>
 </ul>
 </li>
-<li>减小请求体积<ul>
+<li><p>减小请求体积</p>
+<ul>
+<li>缩小各文件体积——HTML、CSS、JS、图片（手动/自动）</li>
 <li>资源压缩</li>
 </ul>
 </li>
-<li>提升请求速度<ul>
+<li><p>提升请求速度</p>
+<ul>
+<li>HTTP/2 Server Push（服务器压力增加，详见<a href="https://dexecure.com/blog/http2-push-vs-http-preload/" target="_blank" rel="noopener">链接</a>）</li>
+<li><p>通过<code>preload</code>，<code>prefetch</code>（正确使用，一般用于字体文件、第二屏的资源或可预测的资源），和<code>prerender</code>（预获取并渲染在视口外）等预加载资源，详情见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Link_types" target="_blank" rel="noopener">链接</a></p>
+</li>
+<li><p>DNS预解析——<code>dns-prefetch</code>（提前DNS查询，文档内的链接包括很多不同的域名时）和<code>preconnect</code>（提前与服务器建立链接？），详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Link_types" target="_blank" rel="noopener">链接</a></p>
+</li>
 <li>HTTP1.1基础上，用过CDN实现域名分片，使得能够启用更多TCP链接（可能带来优先级高的资源被优先级低的资源抢占带宽的问题）</li>
-<li>升级HTTP版本（2.0的多路复用，解决1.1带宽利用率低，对头阻塞等问题）</li>
+<li>升级HTTP版本（HTTP/2的多路复用，服务端推送等特性，解决1.1带宽利用率低，队头阻塞等问题）</li>
 <li>使用CDN，减少RTT时间（Round Trip Time）</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>PC端根据浏览器工作原理进行的优化<ul>
-<li>HTML结构和CSS样式的相关优化（减少单一元素变化对其他元素的影响；避免层爆炸；通过WebComponent使DOM和样式组件化等）</li>
+<li>HTML结构和CSS样式的相关优化（减少单一元素变化对其他元素的影响；避免隐式合成导致的层爆炸；通过WebComponent使DOM和样式组件化等）</li>
 <li>减轻渲染进程主线程的负担<ul>
 <li>避免不必要的重排（回流）、重绘</li>
 <li>尽量使用CSS动画，通过will-change合成动画，将其从主线程脱离</li>
 <li>减少强制同步布局与布局抖动（指操作DOM之后由于读取DOM属性而在当前任务立即触发样式和布局计算）</li>
 <li>减少JavaScript部分的执行时间<ul>
+<li>去除不必要的<code>polyfill</code></li>
 <li>分解任务</li>
 <li>Web Workers</li>
 </ul>
@@ -732,6 +744,20 @@
 <p>最常见的就是Loading的运用了，它能够很好的减缓用户在应用无数据时的焦虑。</p>
 <p>更多的诸如动画设计、吸顶吸底设计、过渡曲线设计等。</p>
 <p>提出这一优化点，一是因为这些优化和我们生活更加贴近，二嘛，就是希望我们对于用户体验优化，能更加的符合用户操作直觉，因为个人遇到过很多想要吐槽的设计哈哈哈。（例如内容填不满一个视口时也增加的吸顶吸底。。有滚动条的时候却不加。。吸顶也没有刷新功能等等）</p>
+<h2 id="指标与优化手段对接（待画图）"><a href="#指标与优化手段对接（待画图）" class="headerlink" title="指标与优化手段对接（待画图）"></a>指标与优化手段对接（待画图）</h2><p>根据刚刚的分类，其实也可以看出，除了CLS偏向于用户体验优化，其他指标多是指性能优化。</p>
+<p>我根据个人的理解，简单的把指标与优化手段对接一下（<em>由于很多性能优化都是共通的，这里主要突出每个指标的侧重点</em>）：</p>
+<p><strong><a href="https://web.dev/fcp/" target="_blank" rel="noopener">First contentful paint (FCP)</a>:</strong> 首次内容绘制！它的侧重点就是，没有侧重点。。。┓(´_｀)┏ 这个指标是在太基础了，时间跨度越大的指标，涉及的东西就越广。感觉除了减少交互请求的手段，，其他手段都可以用。</p>
+<p>（图——时间跨度大）</p>
+<p><strong><a href="https://web.dev/lcp/" target="_blank" rel="noopener">Largest contentful paint (LCP)</a>:</strong> 最大内容绘制！在FCP的基础上，侧重于<strong>减少请求体积</strong>和<strong>提升请求速度</strong>。（LCP主要评估<code>&lt;image&gt;</code>，<code>&lt;svg&gt;</code>，<code>&lt;video&gt;</code>，<code>url()加载的背景图片</code>，<code>包含文本的块级元素</code>）</p>
+<p>（图——侧重请求体积和速度）</p>
+<p><strong><a href="https://web.dev/fid/" target="_blank" rel="noopener">First input delay (FID)</a>:</strong>首次交互延迟！在FCP和LCP的基础上，侧重于<strong>减少交互请求</strong>，加快响应过程。</p>
+<p>（图——侧重较少交互请求）</p>
+<p><strong><a href="https://web.dev/tti/" target="_blank" rel="noopener">Time to Interactive (TTI)</a>:</strong>交互准备就绪！类似于FCP，属于时间跨度较大的指标，涉及除交互进行之外的所有优化点。</p>
+<p>（图——时间跨度大）</p>
+<p><strong><a href="https://web.dev/tbt/" target="_blank" rel="noopener">Total blocking time (TBT)</a>:</strong>总阻塞时间！指从FCP到TTI的时间段，要想这个时间段缩短，侧重点在<strong>减轻渲染进程主线程的负担</strong>上。</p>
+<p>（图——主线程任务优化）</p>
+<p><strong><a href="https://web.dev/cls/" target="_blank" rel="noopener">Cumulative layout shift (CLS)</a>:</strong>累积布局转换！此指标偏向于用户体验优化，主要注意通过交互而展示的元素对现有内容的影响，以及字体下载完毕对字体的自动替换。可以通过预留广告位，preload字体等方式优化。。。吧（真的吗真的吗真的吗）。</p>
+<p>（图——画不出来）</p>
 <h2 id="根据实际情况选择优化"><a href="#根据实际情况选择优化" class="headerlink" title="根据实际情况选择优化"></a>根据实际情况选择优化</h2><p>以上更多的是指从头开发一个项目时的优化，然而还有接受一些项目需要优化的情况，因此也就产生了通过Chrome性能检测工具进行调试的场景。</p>
 <p>后面可能会补上Chrome性能检测工具的用法学习记录。</p>
 <h1 id="感谢观看"><a href="#感谢观看" class="headerlink" title="感谢观看"></a>感谢观看</h1>
@@ -1014,7 +1040,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">18.3k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">19k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
